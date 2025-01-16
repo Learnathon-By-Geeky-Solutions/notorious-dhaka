@@ -44,3 +44,4 @@ crashlytics-build.properties
 *.ipr
 *.iws
 [Aa]ssets/Plugins/Editor/JetBrains*
+Packages/com.merry-yellow.code-assist/
