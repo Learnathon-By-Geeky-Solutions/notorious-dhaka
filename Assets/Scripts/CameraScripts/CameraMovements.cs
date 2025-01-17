@@ -6,8 +6,8 @@ public class CameraMovement : MonoBehaviour
     public Transform target;
     void Start()
     {
-        // This method is intentionally left empty.
-        // It serves as a placeholder for future initialization logic, if required.
+    // This method is intentionally left empty.
+    // It serves as a placeholder for future initialization logic, if required.
     }
     void Update()
     {
