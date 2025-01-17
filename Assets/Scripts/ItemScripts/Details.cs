@@ -12,7 +12,8 @@ public class Details : MonoBehaviour
     }
     void Update()
     {
-        
+        // This method is intentionally left empty.
+        // It serves as a placeholder for future initialization logic, if required.
     }
 
     private void OnCollisionEnter(Collision collision)
