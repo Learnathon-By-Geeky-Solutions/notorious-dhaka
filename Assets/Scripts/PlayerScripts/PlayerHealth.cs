@@ -3,48 +3,51 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class PlayerHealth : MonoBehaviour
+namespace PlayerStatus
 {
-    public float maxHealth = 100f;
-    private float currentHealth;
-
-    public TextMeshProUGUI healthText;
-
-    void Start()
+    public class PlayerHealth : MonoBehaviour
     {
-        currentHealth = maxHealth;
-        UpdateHealthUI();
-    }
-    public void TakeDamage(float damage)
-    {
-        currentHealth -= damage;
-        currentHealth = Mathf.Max(currentHealth, 0);
-        UpdateHealthUI();
-        Debug.Log($"Player Health: {currentHealth}");
+        public float maxHealth = 100f;
+        private float currentHealth;
 
-        if (currentHealth <= 0)
+        public TextMeshProUGUI healthText;
+
+        void Start()
         {
-            Die();
+            currentHealth = maxHealth;
+            UpdateHealthUI();
         }
-    }
-    void UpdateHealthUI()
-    {
-        if (healthText != null)
+        public void TakeDamage(float damage)
         {
-            if (currentHealth > 0)
+            currentHealth -= damage;
+            currentHealth = Mathf.Max(currentHealth, 0);
+            UpdateHealthUI();
+            Debug.Log($"Player Health: {currentHealth}");
+
+            if (currentHealth <= 0)
             {
-                healthText.text = $"Health: {currentHealth}/{maxHealth}";
-            }
-            else
-            {
-                healthText.text = "Player Died";
+                Die();
             }
         }
-    }
-    void Die()
-    {
-        Debug.Log("Player is dead.");
-        UpdateHealthUI();
-        Destroy(gameObject);
+        void UpdateHealthUI()
+        {
+            if (healthText != null)
+            {
+                if (currentHealth > 0)
+                {
+                    healthText.text = $"Health: {currentHealth}/{maxHealth}";
+                }
+                else
+                {
+                    healthText.text = "Player Died";
+                }
+            }
+        }
+        void Die()
+        {
+            Debug.Log("Player is dead.");
+            UpdateHealthUI();
+            Destroy(gameObject);
+        }
     }
 }

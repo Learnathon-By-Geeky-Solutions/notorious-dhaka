@@ -3,16 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using CharacterBehaves;
 
-public class HammerBehaviour : MonoBehaviour
+namespace ItemBehaves
 {
-    private void OnTriggerEnter(Collider other)
+    public class HammerBehaviour : MonoBehaviour
     {
-        if (other.CompareTag("Enemy"))
+        private void OnTriggerEnter(Collider other)
         {
-            FrogBehaviour frog = other.GetComponent<FrogBehaviour>();
-            if (frog != null)
+            if (other.CompareTag("Enemy"))
             {
-                frog.TakeDamage(25f);
+                FrogBehaviour frog = other.GetComponent<FrogBehaviour>();
+                if (frog != null)
+                {
+                    frog.TakeDamage(25f);
+                }
             }
         }
     }
