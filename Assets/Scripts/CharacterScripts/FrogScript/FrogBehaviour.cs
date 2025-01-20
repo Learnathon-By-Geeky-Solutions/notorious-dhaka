@@ -1,6 +1,6 @@
 using System.Collections;
 using UnityEngine;
-
+using PlayerStats;
 namespace CharacterBehaves
 {
     public class FrogBehaviour : MonoBehaviour

@@ -1,34 +1,39 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Manager;
 
-public class Details : MonoBehaviour
+namespace ItemZone
 {
-    public Items item;
-    public Inventory storage;
-    void Start()
+    public class Details : MonoBehaviour
     {
-        storage = FindObjectOfType<Inventory>();
-    }
-    void Update()
-    {
-        // This method is intentionally left empty.
-        // It serves as a placeholder for future initialization logic, if required.
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.CompareTag("Player"))
+        public Items item;
+        public Inventory storage;
+        void Start()
         {
-            if (item != null && storage != null)
+            storage = FindObjectOfType<Inventory>();
+        }
+        void Update()
+        {
+            // This method is intentionally left empty.
+            // It serves as a placeholder for future initialization logic, if required.
+        }
+
+        private void OnCollisionEnter(Collision collision)
+        {
+            if (collision.gameObject.CompareTag("Player"))
             {
-                storage.AddItem(item);
-                Destroy(gameObject);
-            }
-            else
-            {
-                Debug.LogWarning("Item or Storage is null!");
+                if (item != null && storage != null)
+                {
+                    storage.AddItem(item);
+                    Destroy(gameObject);
+                }
+                else
+                {
+                    Debug.LogWarning("Item or Storage is null!");
+                }
             }
         }
     }
+
 }

@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using Crafting;
 public class CraftingManager : MonoBehaviour
 {
     public List<CraftingRecipe> recipes;

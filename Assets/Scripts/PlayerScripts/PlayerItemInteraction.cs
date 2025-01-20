@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using Manager;
 public class PlayerItemInteraction : MonoBehaviour
 {
     public Inventory storage;

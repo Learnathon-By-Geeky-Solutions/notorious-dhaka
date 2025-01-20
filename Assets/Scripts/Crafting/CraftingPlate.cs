@@ -1,38 +1,42 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using ItemZone;
 
-public class CraftingPlate : MonoBehaviour
+namespace Crafting
 {
-    public CraftingManager craftingManager;
-    private List<Items> nearbyItems = new();
-
-    private void OnTriggerEnter(Collider other)
+    public class CraftingPlate : MonoBehaviour
     {
-        Details itemObject = other.GetComponent<Details>();
-        if (itemObject != null && itemObject.item != null)
+        public CraftingManager craftingManager;
+        private List<Items> nearbyItems = new();
+
+        private void OnTriggerEnter(Collider other)
         {
-            nearbyItems.Add(itemObject.item);
-            Debug.Log($"Item added to crafting plate: {itemObject.item.name}");
+            Details itemObject = other.GetComponent<Details>();
+            if (itemObject != null && itemObject.item != null)
+            {
+                nearbyItems.Add(itemObject.item);
+                Debug.Log($"Item added to crafting plate: {itemObject.item.name}");
+            }
         }
-    }
 
-    private void OnTriggerExit(Collider other)
-    {
-        Details itemObject = other.GetComponent<Details>();
-        if (itemObject != null && itemObject.item != null)
+        private void OnTriggerExit(Collider other)
         {
-            nearbyItems.Remove(itemObject.item);
-            Debug.Log($"Item removed from crafting plate: {itemObject.item.name}");
+            Details itemObject = other.GetComponent<Details>();
+            if (itemObject != null && itemObject.item != null)
+            {
+                nearbyItems.Remove(itemObject.item);
+                Debug.Log($"Item removed from crafting plate: {itemObject.item.name}");
+            }
         }
-    }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.C))
+        private void Update()
         {
-            craftingManager.TryCraft(nearbyItems);
-            Debug.Log("Key Pressed");
+            if (Input.GetKeyDown(KeyCode.C))
+            {
+                craftingManager.TryCraft(nearbyItems);
+                Debug.Log("Key Pressed");
+            }
         }
     }
 }
