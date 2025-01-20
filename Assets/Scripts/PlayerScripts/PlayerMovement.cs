@@ -5,7 +5,7 @@ namespace Movement
 {
     public class PlayerMovement : MonoBehaviour
     {
-        private float speed = 10f;
+        private readonly float speed = 10f;
         private Rigidbody rb;
 
         void Start()

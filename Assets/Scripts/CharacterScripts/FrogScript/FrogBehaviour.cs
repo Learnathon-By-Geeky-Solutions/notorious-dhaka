@@ -5,12 +5,12 @@ namespace CharacterBehaves
 {
     public class FrogBehaviour : MonoBehaviour
     {
-        private float roamJumpForce = 5f;
-        private float attackJumpForce = 15f;
-        private float detectionRange = 10f;
-        private float damage = 10f;
-        private float jumpCooldown = 2f;
-        private float tacklePushForce = 10f;
+        private readonly float roamJumpForce = 5f;
+        private readonly float attackJumpForce = 15f;
+        private readonly float detectionRange = 10f;
+        private readonly float damage = 10f;
+        private readonly float jumpCooldown = 2f;
+        private readonly float tacklePushForce = 10f;
 
         private Transform player;
         private Rigidbody rb;

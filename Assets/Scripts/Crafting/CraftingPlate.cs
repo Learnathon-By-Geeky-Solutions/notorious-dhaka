@@ -10,7 +10,7 @@ namespace Crafting
     public class CraftingPlate : MonoBehaviour
     {
         public CraftingManager craftingManager;
-        private List<Items> nearbyItems = new();
+        private readonly List<Items> nearbyItems = new();
 
         private void OnTriggerEnter(Collider other)
         {
