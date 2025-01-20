@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-namespace PlayerStats
+namespace PlayerStatus
 {
     public class PlayerHealth : MonoBehaviour
     {
