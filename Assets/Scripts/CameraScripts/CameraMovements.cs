@@ -16,16 +16,31 @@ namespace CameraBehaves
 
         void Start()
         {
-            // This method is intentionally left empty.
-            // It serves as a placeholder for future initialization logic, if required.
+            // Automatically find the player's transform if not already assigned
+            if (target == null)
+            {
+                GameObject player = GameObject.FindGameObjectWithTag("Player");
+                if (player != null)
+                {
+                    Target = player.transform;
+                }
+                else
+                {
+                    Debug.LogError("Player not found! Ensure the Player GameObject has the 'Player' tag.");
+                }
+            }
         }
 
         void Update()
         {
             if (target != null)
-                transform.position = target.position;
+            {
+                transform.position = target.position; // Follow the target
+            }
             else
+            {
                 Debug.Log("Game Over!");
+            }
         }
     }
 }

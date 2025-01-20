@@ -95,10 +95,10 @@ namespace CharacterBehaves
             }
         }
 
-        public void TakeDamage(float damage)
+        public static void TakeDamage(GameObject target, float damage)
         {
-            Debug.Log($"{gameObject.name} took {damage} damage!");
-            Destroy(gameObject);
+            Debug.Log($"{target.name} took {damage} damage!");
+            Destroy(target);
         }
     }
 }
