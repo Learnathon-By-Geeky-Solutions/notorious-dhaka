@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using ItemZone;
+using Manager;
+using Scriptables;
 
 namespace Crafting
 {
