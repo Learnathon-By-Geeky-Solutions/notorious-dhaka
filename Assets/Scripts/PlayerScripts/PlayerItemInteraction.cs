@@ -19,5 +19,4 @@ public class PlayerItemInteraction : MonoBehaviour
             canvas.SetActive(!canvas.activeSelf);
         }
     }
-
 }
