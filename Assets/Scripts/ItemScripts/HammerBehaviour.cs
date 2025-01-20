@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using CharacterBehaves;
 
-namespace ItemZone
+namespace ItemBehaves
 {
     public class HammerBehaviour : MonoBehaviour
     {
