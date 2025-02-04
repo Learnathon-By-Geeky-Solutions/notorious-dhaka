@@ -1,31 +1,44 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-namespace Movement
+
+public class PlayerMovement : MonoBehaviour
 {
-    public class PlayerMovement : MonoBehaviour
+    public float moveSpeed = 5f;
+    private Animator animator;
+    private Rigidbody rb;
+    private Vector3 moveDirection;
+
+    void Start()
     {
-        private readonly float speed = 10f;
-        private Rigidbody rb;
+        animator = GetComponent<Animator>();
+        rb = GetComponent<Rigidbody>();
+    }
 
-        void Start()
+    void Update()
+    {
+        float horizontal = Input.GetAxis("Horizontal");
+        float vertical = Input.GetAxis("Vertical");
+
+        moveDirection = new Vector3(horizontal, 0f, vertical).normalized;
+
+        // **Play Walking Animation when moving**
+        if (animator != null)
         {
-            rb = GetComponent<Rigidbody>();
+            animator.SetFloat("Speed", moveDirection.magnitude);
         }
 
-        void Update()
+        // Rotate character
+        if (moveDirection != Vector3.zero)
         {
-            // This method is intentionally left empty.
-            // It serves as a placeholder for future initialization logic, if required.
-        }
-        void FixedUpdate()
-        {
-            float moveHorizontal = Input.GetAxis("Horizontal");
-            float moveVertical = Input.GetAxis("Vertical");
-
-            Vector3 movement = new Vector3(moveHorizontal, 0, moveVertical);
-            rb.MovePosition(rb.position + movement * speed * Time.deltaTime);
+            Quaternion toRotation = Quaternion.LookRotation(moveDirection, Vector3.up);
+            transform.rotation = Quaternion.Slerp(transform.rotation, toRotation, 10f * Time.deltaTime);
         }
     }
 
+    void FixedUpdate()
+    {
+        if (rb != null)
+        {
+            rb.MovePosition(rb.position + moveDirection * moveSpeed * Time.fixedDeltaTime);
+        }
+    }
 }

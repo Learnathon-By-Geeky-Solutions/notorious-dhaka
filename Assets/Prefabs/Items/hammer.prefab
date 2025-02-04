@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 172855469303063259}
   - component: {fileID: 4706738127043733122}
   - component: {fileID: 1384582610567651851}
+  - component: {fileID: -328627538820931387}
   m_Layer: 0
   m_Name: hammer
   m_TagString: Untagged
@@ -105,3 +106,21 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &-328627538820931387
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2820877293920293599}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8e921de0e366af419c9196fc3ad611e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 0}
+  playerCamera: {fileID: 0}
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  attackRange: 2
