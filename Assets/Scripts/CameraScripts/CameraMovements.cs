@@ -5,9 +5,8 @@ namespace CameraBehaves
 {
     public class CameraMovement : MonoBehaviour
     {
-        private Transform target; // Private field
+        private Transform target;
 
-        // Public property for encapsulation
         public Transform Target
         {
             get => target;
@@ -16,7 +15,6 @@ namespace CameraBehaves
 
         void Start()
         {
-            // Automatically find the player's transform if not already assigned
             if (target == null)
             {
                 GameObject player = GameObject.FindGameObjectWithTag("Player");
@@ -35,7 +33,7 @@ namespace CameraBehaves
         {
             if (target != null)
             {
-                transform.position = target.position; // Follow the target
+                transform.position = target.position;
             }
             else
             {
