@@ -6,12 +6,15 @@ public class PlayerMovement : MonoBehaviour
     private Animator animator;
     private Rigidbody rb;
     private Vector3 moveDirection;
-    private bool isPunching = false;
 
     void Start()
     {
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody>();
+
+        rb.isKinematic = false;
+        rb.useGravity = true; // Ensure gravity is applied
+        rb.freezeRotation = true;
     }
 
     void Update()
@@ -21,37 +24,28 @@ public class PlayerMovement : MonoBehaviour
 
         moveDirection = new Vector3(horizontal, 0f, vertical).normalized;
 
-        if (Input.GetButtonDown("Fire1"))
+        if (moveDirection.magnitude > 0)
         {
-            animator.SetTrigger("Punch");
-            isPunching = true; 
-            Invoke(nameof(ResetPunch), 0.5f); 
+            Quaternion toRotation = Quaternion.LookRotation(moveDirection);
+            transform.rotation = Quaternion.Slerp(transform.rotation, toRotation, 10f * Time.deltaTime);
         }
 
-     
-        if (animator != null && !isPunching) 
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            animator.SetTrigger("Kick");
+        }
+
+        if (animator != null)
         {
             animator.SetFloat("Speed", moveDirection.magnitude);
-        }
-
-      
-        if (moveDirection != Vector3.zero && !isPunching)
-        {
-            Quaternion toRotation = Quaternion.LookRotation(moveDirection, Vector3.up);
-            transform.rotation = Quaternion.Slerp(transform.rotation, toRotation, 10f * Time.deltaTime);
         }
     }
 
     void FixedUpdate()
     {
-        if (rb != null && !isPunching) 
+        if (moveDirection.magnitude > 0)
         {
             rb.MovePosition(rb.position + moveDirection * moveSpeed * Time.fixedDeltaTime);
         }
-    }
-
-    void ResetPunch()
-    {
-        isPunching = false;
     }
 }

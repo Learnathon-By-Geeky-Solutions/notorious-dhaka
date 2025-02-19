@@ -17,6 +17,7 @@ namespace PlayerStatus
             currentHealth = maxHealth;
             UpdateHealthUI();
         }
+
         public void TakeDamage(float damage)
         {
             currentHealth -= damage;
@@ -29,6 +30,7 @@ namespace PlayerStatus
                 Die();
             }
         }
+
         void UpdateHealthUI()
         {
             if (healthText != null)
@@ -43,6 +45,7 @@ namespace PlayerStatus
                 }
             }
         }
+
         void Die()
         {
             Debug.Log("Player is dead.");

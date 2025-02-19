@@ -11,9 +11,9 @@ namespace ItemBehaves
         {
             if (other.CompareTag("Enemy"))
             {
-                if (other.GetComponent<FrogBehaviour>() != null) // Ensure it's a FrogBehaviour enemy
+                if (other.GetComponent<FrogBehaviour>() != null)
                 {
-                    FrogBehaviour.TakeDamage(other.gameObject, 25f); // Correctly access the static method
+                    FrogBehaviour.TakeDamage(other.gameObject, 25f);
                 }
             }
         }
