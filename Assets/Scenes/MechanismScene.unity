@@ -1194,6 +1194,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Vela
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: dcb2260be0c55b841a61adcafc718304, type: 3}
+      propertyPath: m_TagString
+      value: Vehicle
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1808,6 +1812,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationSpeed: 5
+--- !u!114 &1111413629
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1111413615}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0451c752573d72d40a0859948e2b2a23, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 1111413615}
+  isInVehicle: 0
 --- !u!4 &1147014056 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2497045346931425617, guid: c46f641e0a5027b4e8e53d6d10fa6c15, type: 3}
@@ -2169,6 +2187,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 97dff52a8b0f17340960666ea8effa7f, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1111413628}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 97dff52a8b0f17340960666ea8effa7f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1111413629}
     - targetCorrespondingSourceObject: {fileID: 4549111882529890269, guid: 97dff52a8b0f17340960666ea8effa7f, type: 3}
       insertIndex: -1
       addedObject: {fileID: 668391195}
