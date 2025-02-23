@@ -37,31 +37,48 @@ public class VehicleInteraction : MonoBehaviour
 
     void EnterVehicle()
     {
-        // Attach player to the vehicle
+        // Attach player to vehicle
         player.transform.SetParent(currentVehicle.transform);
-        player.transform.localPosition = Vector3.zero; // Adjust position to the vehicle seat
+
+        // Set player position above the vehicle's collider
+        Vector3 seatPosition = currentVehicle.transform.position + new Vector3(0, -1, 0); // Adjust height as needed
+        player.transform.position = seatPosition;
+
+        // Match rotation
         player.transform.rotation = currentVehicle.transform.rotation;
 
-        // Disable player movement
+        // Disable player movement and physics
         playerMovement.enabled = false;
+        if (player.TryGetComponent<Rigidbody>(out Rigidbody rb))
+        {
+            rb.isKinematic = true; // Disable physics while in vehicle
+        }
 
-        // Enable vehicle movement (you can add the code for vehicle movement here)
         isInVehicle = true;
         Debug.Log("Entered the vehicle!");
     }
 
+
     void ExitVehicle()
     {
-        // Detach player from the vehicle
+        // Detach from vehicle
         player.transform.SetParent(null);
-        player.transform.position = currentVehicle.transform.position + new Vector3(3, 0, 0); // Set exit position
 
-        // Re-enable player movement
+        // Place the player beside the vehicle instead of inside it
+        Vector3 exitPosition = currentVehicle.transform.position + new Vector3(3, 1, 0); // Adjust height to prevent falling
+        player.transform.position = exitPosition;
+
+        // Enable player movement and physics
         playerMovement.enabled = true;
+        if (player.TryGetComponent<Rigidbody>(out Rigidbody rb))
+        {
+            rb.isKinematic = false; // Re-enable physics when exiting
+        }
 
         isInVehicle = false;
         Debug.Log("Exited the vehicle!");
     }
+
 
     void OnTriggerEnter(Collider other)
     {
