@@ -9,6 +9,7 @@ public class VehicleInteraction : MonoBehaviour
     private bool canEnterVehicle = false;
     public bool isInVehicle = false;
 
+
     // Reference to the player's movement script (assuming it's named 'PlayerMovement')
     private PlayerMovement playerMovement;
 
@@ -16,6 +17,7 @@ public class VehicleInteraction : MonoBehaviour
     {
         // Get the player movement script on start
         playerMovement = player.GetComponent<PlayerMovement>();
+
     }
 
     void Update()
