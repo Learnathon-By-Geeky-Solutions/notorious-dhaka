@@ -8,7 +8,7 @@ public class VehicleInteraction : MonoBehaviour
     private GameObject currentVehicle; // The vehicle player can enter
     private bool canEnterVehicle = false;
     public bool isInVehicle = false;
-    private Rigidbody vela;
+
 
     // Reference to the player's movement script (assuming it's named 'PlayerMovement')
     private PlayerMovement playerMovement;
@@ -17,7 +17,7 @@ public class VehicleInteraction : MonoBehaviour
     {
         // Get the player movement script on start
         playerMovement = player.GetComponent<PlayerMovement>();
-        vela = GetComponent<Rigidbody>();
+
     }
 
     void Update()
