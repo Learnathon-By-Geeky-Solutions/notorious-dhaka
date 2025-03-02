@@ -9,6 +9,7 @@ TagManager:
   - Frog
   - Enemy
   - Vehicle
+  - NPC
   layers:
   - Default
   - TransparentFX

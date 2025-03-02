@@ -4,25 +4,24 @@ using UnityEngine;
 
 public class VehicleInteraction : MonoBehaviour
 {
-    public GameObject player; // Reference to the player
-    private GameObject currentVehicle; // The vehicle player can enter
+    public GameObject player;
+    private GameObject currentVehicle;
     private bool canEnterVehicle = false;
     public bool isInVehicle = false;
 
-
-    // Reference to the player's movement script (assuming it's named 'PlayerMovement')
     private PlayerMovement playerMovement;
+    private WaterVehicleMovement vehicleMovement; // Reference to vehicle movement script
+    private Rigidbody playerRb; // Store player's Rigidbody
 
     void Start()
     {
-        // Get the player movement script on start
         playerMovement = player.GetComponent<PlayerMovement>();
-
+        playerRb = player.GetComponent<Rigidbody>(); // Get player's Rigidbody
     }
 
     void Update()
     {
-        if (canEnterVehicle && Input.GetKeyDown(KeyCode.Return)) // Return is the Enter key
+        if (canEnterVehicle && Input.GetKeyDown(KeyCode.Return))
         {
             if (!isInVehicle)
             {
@@ -37,48 +36,54 @@ public class VehicleInteraction : MonoBehaviour
 
     void EnterVehicle()
     {
-        // Attach player to vehicle
         player.transform.SetParent(currentVehicle.transform);
 
-        // Set player position above the vehicle's collider
-        Vector3 seatPosition = currentVehicle.transform.position + new Vector3(0, -1, 0); // Adjust height as needed
+        Vector3 seatPosition = currentVehicle.transform.position + new Vector3(0, 1, 0); // Adjust height as needed
         player.transform.position = seatPosition;
-
-        // Match rotation
         player.transform.rotation = currentVehicle.transform.rotation;
 
-        // Disable player movement and physics
         playerMovement.enabled = false;
-        if (player.TryGetComponent<Rigidbody>(out Rigidbody rb))
+
+        // Disable player's physics
+        if (playerRb != null)
         {
-            rb.isKinematic = true; // Disable physics while in vehicle
+            playerRb.isKinematic = true;
+        }
+
+        // Get the vehicle's movement script and enable it
+        vehicleMovement = currentVehicle.GetComponent<WaterVehicleMovement>();
+        if (vehicleMovement != null)
+        {
+            vehicleMovement.SetMoving(true);
         }
 
         isInVehicle = true;
         Debug.Log("Entered the vehicle!");
     }
 
-
     void ExitVehicle()
     {
-        // Detach from vehicle
         player.transform.SetParent(null);
-
-        // Place the player beside the vehicle instead of inside it
         Vector3 exitPosition = currentVehicle.transform.position + new Vector3(3, 1, 0); // Adjust height to prevent falling
         player.transform.position = exitPosition;
 
-        // Enable player movement and physics
         playerMovement.enabled = true;
-        if (player.TryGetComponent<Rigidbody>(out Rigidbody rb))
+
+        // Re-enable player's physics
+        if (playerRb != null)
         {
-            rb.isKinematic = false; // Re-enable physics when exiting
+            playerRb.isKinematic = false;
+        }
+
+        // Stop vehicle movement when exiting
+        if (vehicleMovement != null)
+        {
+            vehicleMovement.SetMoving(false);
         }
 
         isInVehicle = false;
         Debug.Log("Exited the vehicle!");
     }
-
 
     void OnTriggerEnter(Collider other)
     {
@@ -92,13 +97,10 @@ public class VehicleInteraction : MonoBehaviour
 
     void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Vehicle"))
+        if (other.CompareTag("Vehicle") && currentVehicle == other.gameObject)
         {
-            if (currentVehicle == other.gameObject)
-            {
-                currentVehicle = null;
-                canEnterVehicle = false;
-            }
+            currentVehicle = null;
+            canEnterVehicle = false;
         }
     }
 }
