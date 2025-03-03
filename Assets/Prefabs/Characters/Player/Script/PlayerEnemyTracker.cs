@@ -5,13 +5,12 @@ public class PlayerEnemyTracker : MonoBehaviour
 {
     private Transform targetEnemy;
     public float rotationSpeed = 5f;
-    private Rigidbody rb; // Rigidbody reference
+    private Rigidbody rb;
 
     private List<Transform> enemiesInRange = new List<Transform>();
 
     void Start()
     {
-        // Get the Rigidbody component
         rb = GetComponent<Rigidbody>();
 
         if (rb == null)
@@ -19,13 +18,10 @@ public class PlayerEnemyTracker : MonoBehaviour
             Debug.LogError("Rigidbody not found! Adding one now...");
             rb = gameObject.AddComponent<Rigidbody>();
         }
-
-        // Ensure proper Rigidbody settings
         rb.useGravity = true;
-        rb.isKinematic = false; // Allow physics to work
-        rb.freezeRotation = true; // Prevent unwanted rotation
+        rb.isKinematic = false;
+        rb.freezeRotation = true;
     }
-
     void Update()
     {
         if (targetEnemy != null)
@@ -36,11 +32,8 @@ public class PlayerEnemyTracker : MonoBehaviour
 
     void FaceEnemy()
     {
-        // Get direction to enemy but ignore Y-axis to prevent tilting up/down
         Vector3 direction = (targetEnemy.position - transform.position);
-        direction.y = 0; // Ignore height differences
-
-        // Rotate smoothly towards the enemy
+        direction.y = 0;
         Quaternion lookRotation = Quaternion.LookRotation(direction);
         transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * rotationSpeed);
     }
@@ -62,7 +55,6 @@ public class PlayerEnemyTracker : MonoBehaviour
             UpdateTargetEnemy();
         }
     }
-
     void UpdateTargetEnemy()
     {
         if (enemiesInRange.Count == 0)
@@ -71,10 +63,8 @@ public class PlayerEnemyTracker : MonoBehaviour
             return;
         }
 
-        // Find the closest enemy
         float closestDistance = Mathf.Infinity;
         Transform closestEnemy = null;
-
         foreach (Transform enemy in enemiesInRange)
         {
             float distance = Vector3.Distance(transform.position, enemy.position);

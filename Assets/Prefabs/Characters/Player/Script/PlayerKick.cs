@@ -19,32 +19,17 @@ public class PlayerKick : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.K))
         {
-            Kick();
+            KickHit();
         }
     }
 
-    private void Kick()
+    public void KickHit()
     {
-        if (animator == null) return;
-
-        animator.SetTrigger("Kick");
-
-        if (kickPoint == null)
-        {
-            Debug.LogWarning("Kick Point not set!");
-            return;
-        }
-
         RaycastHit hit;
         if (Physics.Raycast(kickPoint.position, kickPoint.forward, out hit, kickRange, enemyLayer))
         {
             hit.collider.GetComponent<EnemyHealth>()?.TakeDamage(kickDamage);
-            Debug.Log("Enemy hit! Dealing " + kickDamage + " damage.");
             kickparticle.Play();
-        }
-        else
-        {
-            Debug.Log("Kick missed! No enemy in range.");
         }
     }
 

@@ -10,13 +10,13 @@ public class VehicleInteraction : MonoBehaviour
     public bool isInVehicle = false;
 
     private PlayerMovement playerMovement;
-    private WaterVehicleMovement vehicleMovement; // Reference to vehicle movement script
-    private Rigidbody playerRb; // Store player's Rigidbody
+    private RaftController raftController;
+    private Rigidbody playerRb;
 
     void Start()
     {
         playerMovement = player.GetComponent<PlayerMovement>();
-        playerRb = player.GetComponent<Rigidbody>(); // Get player's Rigidbody
+        playerRb = player.GetComponent<Rigidbody>();
     }
 
     void Update()
@@ -38,23 +38,20 @@ public class VehicleInteraction : MonoBehaviour
     {
         player.transform.SetParent(currentVehicle.transform);
 
-        Vector3 seatPosition = currentVehicle.transform.position + new Vector3(0, 1, 0); // Adjust height as needed
+        Vector3 seatPosition = currentVehicle.transform.position + new Vector3(0, -1, 0);
         player.transform.position = seatPosition;
         player.transform.rotation = currentVehicle.transform.rotation;
 
         playerMovement.enabled = false;
-
-        // Disable player's physics
         if (playerRb != null)
         {
-            playerRb.isKinematic = true;
+            playerRb.isKinematic = true;  // Disable gravity while in vehicle
         }
 
-        // Get the vehicle's movement script and enable it
-        vehicleMovement = currentVehicle.GetComponent<WaterVehicleMovement>();
-        if (vehicleMovement != null)
+        raftController = currentVehicle.GetComponent<RaftController>();
+        if (raftController != null)
         {
-            vehicleMovement.SetMoving(true);
+            raftController.EnableControl(true);
         }
 
         isInVehicle = true;
@@ -64,21 +61,18 @@ public class VehicleInteraction : MonoBehaviour
     void ExitVehicle()
     {
         player.transform.SetParent(null);
-        Vector3 exitPosition = currentVehicle.transform.position + new Vector3(3, 1, 0); // Adjust height to prevent falling
+        Vector3 exitPosition = currentVehicle.transform.position + new Vector3(3, 1, 0);
         player.transform.position = exitPosition;
 
         playerMovement.enabled = true;
-
-        // Re-enable player's physics
         if (playerRb != null)
         {
-            playerRb.isKinematic = false;
+            playerRb.isKinematic = false;  // Enable gravity again
         }
 
-        // Stop vehicle movement when exiting
-        if (vehicleMovement != null)
+        if (raftController != null)
         {
-            vehicleMovement.SetMoving(false);
+            raftController.EnableControl(false);
         }
 
         isInVehicle = false;

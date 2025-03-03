@@ -4,7 +4,6 @@ public class OldMan : MonoBehaviour
 {
     public DialogueManager dialogueManager;
     public string[] dialogue;
-
     private bool isPlayerNear = false;
 
     void Update()
