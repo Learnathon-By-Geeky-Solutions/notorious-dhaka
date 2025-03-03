@@ -3,7 +3,7 @@
 public class SkeletonAI : MonoBehaviour
 {
     public float detectionRange = 5f;
-    public float stopDistance = 2f; // Now adjustable in the Inspector
+    public float stopDistance = 2f;
     public float moveSpeed = 2f;
     public int attackDamage = 10;
     public float attackCooldown = 1.5f;
@@ -39,12 +39,12 @@ public class SkeletonAI : MonoBehaviour
         if (distance <= stopDistance)
         {
             rb.velocity = Vector3.zero;
-
             if (Time.time - lastAttackTime >= attackCooldown)
             {
                 AttackPlayer();
             }
         }
+
         else if (distance <= detectionRange)
         {
             MoveTowardsPlayer();
@@ -74,10 +74,9 @@ public class SkeletonAI : MonoBehaviour
         DealDamage();
     }
 
-    private void DealDamage()
+    public void DealDamage()
     {
         if (player == null) return;
-
         if (Vector3.Distance(transform.position, player.position) <= stopDistance + 0.5f)
         {
             PlayerStatus.PlayerHealth playerHealth = player.GetComponent<PlayerStatus.PlayerHealth>();
@@ -99,7 +98,6 @@ public class SkeletonAI : MonoBehaviour
             Die();
         }
     }
-
     private void Die()
     {
         animator.SetTrigger("Die");

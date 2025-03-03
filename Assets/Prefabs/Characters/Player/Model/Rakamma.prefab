@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2579129047228760829}
   - component: {fileID: 3962097280121988318}
-  - component: {fileID: 561183880396923498}
   m_Layer: 6
   m_Name: PunchHitbox
   m_TagString: Untagged
@@ -54,20 +53,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.35451397, y: 0.3753508, z: 0.4913777}
   m_Center: {x: 0.04185372, y: -0.11009346, z: 0.09511316}
---- !u!114 &561183880396923498
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 582057066617009957}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a774bd264e8713a4392310e90a411b81, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  punchDamage: 10
-  activeTime: 0.2
 --- !u!1 &2734400546737441091
 GameObject:
   m_ObjectHideFlags: 0
@@ -5610,12 +5595,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 5190664000015525938}
-  punchPoint: {fileID: 2579129047228760829}
-  punchRange: 0.5
-  enemyLayer:
-    serializedVersion: 2
-    m_Bits: 8
-  punchDamage: 20
 --- !u!4 &2227273817811104328 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 97dff52a8b0f17340960666ea8effa7f, type: 3}

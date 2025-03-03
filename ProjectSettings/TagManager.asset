@@ -10,6 +10,7 @@ TagManager:
   - Enemy
   - Vehicle
   - NPC
+  - Water
   layers:
   - Default
   - TransparentFX

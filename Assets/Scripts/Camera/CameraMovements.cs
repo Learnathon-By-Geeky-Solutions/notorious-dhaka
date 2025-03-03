@@ -6,7 +6,6 @@ namespace CameraBehaves
     public class CameraMovement : MonoBehaviour
     {
         private Transform target;
-
         public Transform Target
         {
             get => target;
