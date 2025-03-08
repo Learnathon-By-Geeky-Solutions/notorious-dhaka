@@ -20,6 +20,10 @@ namespace Crafting
                 nearbyItems.Add(itemObject.item);
                 Debug.Log($"Item added to crafting plate: {itemObject.item.name}");
             }
+            else
+            {
+                Debug.LogWarning("Item is missing or not assigned on the colliding object.");
+            }
         }
 
         private void OnTriggerExit(Collider other)
@@ -30,14 +34,26 @@ namespace Crafting
                 nearbyItems.Remove(itemObject.item);
                 Debug.Log($"Item removed from crafting plate: {itemObject.item.name}");
             }
+            else
+            {
+                Debug.LogWarning("Item is missing or not assigned on the colliding object.");
+            }
         }
 
         private void Update()
         {
             if (Input.GetKeyDown(KeyCode.C))
             {
-                craftingManager.TryCraft(nearbyItems);
-                Debug.Log("Key Pressed");
+                // Check if craftingManager is assigned before calling
+                if (craftingManager != null)
+                {
+                    craftingManager.TryCraft(nearbyItems);
+                    Debug.Log("Key Pressed");
+                }
+                else
+                {
+                    Debug.LogError("Crafting manager is not assigned.");
+                }
             }
         }
     }
