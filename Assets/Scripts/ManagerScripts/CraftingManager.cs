@@ -13,8 +13,22 @@ namespace Manager
 
         public void TryCraft(List<Items> nearbyItems)
         {
+            // Check if recipes are assigned and not empty
+            if (recipes == null || recipes.Count == 0)
+            {
+                Debug.LogError("No recipes assigned to the crafting manager!");
+                return;
+            }
+
             foreach (CraftingRecipe recipe in recipes)
             {
+                // Ensure that outputItem is assigned in the recipe
+                if (recipe.outputItem == null)
+                {
+                    Debug.LogError($"Output item is missing in the recipe for {recipe.name}");
+                    continue; // Skip this recipe if outputItem is missing
+                }
+
                 Debug.Log($"Checking recipe: {recipe.outputItem.name}");
 
                 if (IsRecipeMatch(recipe, nearbyItems))
@@ -56,10 +70,22 @@ namespace Manager
 
         private void CraftItem(CraftingRecipe recipe)
         {
-            if (recipe.outputItem.prefab != null)
+            // Check if outputItem and prefab are assigned
+            if (recipe.outputItem != null && recipe.outputItem.prefab != null)
             {
-                Instantiate(recipe.outputItem.prefab, craftingPlate.position + Vector3.up, Quaternion.identity);
-                Debug.Log($"Crafted: {recipe.outputItem.name}");
+                if (craftingPlate != null)
+                {
+                    Instantiate(recipe.outputItem.prefab, craftingPlate.position + Vector3.up, Quaternion.identity);
+                    Debug.Log($"Crafted: {recipe.outputItem.name}");
+                }
+                else
+                {
+                    Debug.LogError("Crafting plate is not assigned.");
+                }
+            }
+            else
+            {
+                Debug.LogError("Output item or prefab is not assigned in the recipe.");
             }
         }
 
