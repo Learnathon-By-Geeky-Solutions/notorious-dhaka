@@ -44,7 +44,6 @@ namespace Crafting
         {
             if (Input.GetKeyDown(KeyCode.C))
             {
-                // Check if craftingManager is assigned before calling
                 if (craftingManager != null)
                 {
                     craftingManager.TryCraft(nearbyItems);

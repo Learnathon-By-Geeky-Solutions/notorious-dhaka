@@ -45,7 +45,7 @@ public class VehicleInteraction : MonoBehaviour
         playerMovement.enabled = false;
         if (playerRb != null)
         {
-            playerRb.isKinematic = true;  // Disable gravity while in vehicle
+            playerRb.isKinematic = true; 
         }
 
         raftController = currentVehicle.GetComponent<RaftController>();
@@ -67,7 +67,7 @@ public class VehicleInteraction : MonoBehaviour
         playerMovement.enabled = true;
         if (playerRb != null)
         {
-            playerRb.isKinematic = false;  // Enable gravity again
+            playerRb.isKinematic = false; 
         }
 
         if (raftController != null)

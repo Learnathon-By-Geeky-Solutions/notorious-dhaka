@@ -69,17 +69,27 @@ namespace Manager
 
         private void SpawnItem(Items item)
         {
-            Vector3 SpawnPosition = transform.position + new Vector3(3, 0, 3);
+            Vector3 spawnPosition = transform.position + new Vector3(2f, 1f, 1.5f); 
+
             if (item.prefab != null)
             {
-                Instantiate(item.prefab, SpawnPosition, Quaternion.identity);
-                Debug.Log($"Spawned item: {item.name}");
+                GameObject spawnedItem = Instantiate(item.prefab, spawnPosition, Quaternion.identity);
+
+                Rigidbody rb = spawnedItem.GetComponent<Rigidbody>();
+                if (rb != null)
+                {
+                    rb.velocity = Vector3.zero; 
+                    rb.angularVelocity = Vector3.zero; 
+                }
+
+                Debug.Log($"Spawned item: {item.name} at {spawnPosition}");
             }
             else
             {
                 Debug.LogWarning($"Prefab missing for item: {item.name}");
             }
         }
+
 
         private void UpdateUI(InventorySlot slot)
         {

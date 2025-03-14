@@ -2,13 +2,13 @@
 
 public class RaftController : MonoBehaviour
 {
-    public float buoyancyForce = 10f;  // Controls how strongly the raft floats
-    public float waterDrag = 0.95f;    // Reduces movement in water
-    public float acceleration = 5f;    // How fast the raft moves
-    public float maxSpeed = 8f;        // Maximum forward speed
-    public float turnSpeed = 50f;      // Rotation speed
-    public float waterLevel = 0f;      // Adjust this to match your actual water height
-    public float stabilityForce = 5f;  // Helps keep the raft level
+    public float buoyancyForce = 10f;  
+    public float waterDrag = 0.95f;    
+    public float acceleration = 5f;    
+    public float maxSpeed = 8f;        
+    public float turnSpeed = 50f;      
+    public float waterLevel = 0f;      
+    public float stabilityForce = 5f;  
 
     private Rigidbody rb;
     private bool isInWater = false;
@@ -40,16 +40,16 @@ public class RaftController : MonoBehaviour
 
         if (depth > 0)
         {
-            // ✅ Apply buoyancy force when below water
+           
             rb.AddForce(Vector3.up * buoyancyForce * depth, ForceMode.Acceleration);
 
-            // ✅ Add stability to prevent excessive tilting
+            
             Vector3 stability = -rb.angularVelocity * stabilityForce;
             rb.AddTorque(stability, ForceMode.Acceleration);
         }
         else
         {
-            // ✅ Simulate gravity if above water (so the raft doesn't float in the air)
+            
             rb.AddForce(Vector3.down * buoyancyForce * 0.5f, ForceMode.Acceleration);
         }
     }
@@ -67,7 +67,7 @@ public class RaftController : MonoBehaviour
 
     void ApplyWaterResistance()
     {
-        // ✅ Apply smooth water drag
+        
         rb.velocity *= waterDrag;
         rb.angularVelocity *= waterDrag;
     }
