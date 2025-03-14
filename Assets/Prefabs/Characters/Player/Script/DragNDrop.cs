@@ -32,7 +32,10 @@ namespace ObjectDrag
         public void OnDrag(PointerEventData eventData)
         {
             Vector3 targetPosition = GetMouseWorldPosition(eventData) + offset;
-            rb.MovePosition(new Vector3(targetPosition.x, fixedY, targetPosition.z));
+
+            targetPosition.y = fixedY;
+
+            rb.MovePosition(targetPosition);
         }
 
         public void OnEndDrag(PointerEventData eventData)
@@ -42,10 +45,15 @@ namespace ObjectDrag
 
         private Vector3 GetMouseWorldPosition(PointerEventData eventData)
         {
-            Vector3 screenPosition = eventData.position;
-            screenPosition.z = mainCamera.WorldToScreenPoint(transform.position).z;
+            Ray ray = mainCamera.ScreenPointToRay(eventData.position);
+            Plane groundPlane = new Plane(Vector3.up, new Vector3(0, fixedY, 0));
 
-            return mainCamera.ScreenToWorldPoint(screenPosition);
+            if (groundPlane.Raycast(ray, out float distance))
+            {
+                return ray.GetPoint(distance);
+            }
+
+            return transform.position; 
         }
     }
 }
