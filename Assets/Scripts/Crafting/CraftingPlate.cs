@@ -10,6 +10,9 @@ namespace Crafting
     public class CraftingPlate : MonoBehaviour
     {
         public CraftingManager craftingManager;
+
+        // Store items and their respective game objects
+        private readonly List<GameObject> nearbyItemObjects = new();
         private readonly List<Items> nearbyItems = new();
 
         private void OnTriggerEnter(Collider other)
@@ -18,6 +21,7 @@ namespace Crafting
             if (itemObject != null && itemObject.item != null)
             {
                 nearbyItems.Add(itemObject.item);
+                nearbyItemObjects.Add(other.gameObject); // Track the actual object
                 Debug.Log($"Item added to crafting plate: {itemObject.item.name}");
             }
             else
@@ -31,7 +35,12 @@ namespace Crafting
             Details itemObject = other.GetComponent<Details>();
             if (itemObject != null && itemObject.item != null)
             {
-                nearbyItems.Remove(itemObject.item);
+                int index = nearbyItems.IndexOf(itemObject.item);
+                if (index >= 0)
+                {
+                    nearbyItems.RemoveAt(index);
+                    nearbyItemObjects.RemoveAt(index); // Remove corresponding GameObject
+                }
                 Debug.Log($"Item removed from crafting plate: {itemObject.item.name}");
             }
             else
@@ -46,8 +55,8 @@ namespace Crafting
             {
                 if (craftingManager != null)
                 {
-                    craftingManager.TryCraft(nearbyItems);
-                    Debug.Log("Key Pressed");
+                    craftingManager.TryCraft(nearbyItems, nearbyItemObjects); // Pass objects too
+                    Debug.Log("Crafting Attempted");
                 }
                 else
                 {
