@@ -5277,7 +5277,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 97dff52a8b0f17340960666ea8effa7f, type: 3}
       propertyPath: m_Name
-      value: Rakamma
+      value: Rivan
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 97dff52a8b0f17340960666ea8effa7f, type: 3}
       propertyPath: m_Layer
@@ -5494,7 +5494,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ce0d9b80b8ee95458d8d320a33da089, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 5
+  maxMoveSpeed: 10
+  acceleration: 5
+  deceleration: 5
+  turnSpeed: 10
+  buoyancyForce: 5
+  verticalSwimSpeed: 5
 --- !u!114 &1846920783670448746
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5595,6 +5600,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 5190664000015525938}
+  punchHitbox: {fileID: 0}
+  puncheffect: {fileID: 0}
 --- !u!4 &2227273817811104328 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 97dff52a8b0f17340960666ea8effa7f, type: 3}

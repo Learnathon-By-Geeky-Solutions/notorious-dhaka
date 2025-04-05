@@ -2,10 +2,10 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float maxMoveSpeed = 10f;
-    public float acceleration = 5f;
-    public float deceleration = 5f;
-    public float turnSpeed = 10f;
+    public float maxMoveSpeed; // Increased for larger step coverage
+    public float acceleration; // Increased for quicker speed buildup
+    public float deceleration;
+    public float turnSpeed;
 
     private Animator animator;
     private Rigidbody rb;
@@ -31,51 +31,46 @@ public class PlayerMovement : MonoBehaviour
         float horizontal = Input.GetAxis("Horizontal");
         float vertical = Input.GetAxis("Vertical");
 
-        Vector3 inputDirection = new Vector3(horizontal, 0f, vertical).normalized;
+        moveDirection = new Vector3(horizontal, 0f, vertical).normalized;
 
-        if (inputDirection.magnitude > 0)
+        if (moveDirection.magnitude > 0)
         {
-            // Smooth rotation towards movement direction
-            Quaternion toRotation = Quaternion.LookRotation(inputDirection);
+            // Smoothly rotate towards movement direction
+            Quaternion toRotation = Quaternion.LookRotation(moveDirection);
             transform.rotation = Quaternion.Slerp(transform.rotation, toRotation, turnSpeed * Time.deltaTime);
         }
 
-        // Update animation speed parameter
+        // Adjust animation speed based on movement
         if (animator != null)
         {
-            animator.SetFloat("Speed", currentVelocity.magnitude / maxMoveSpeed);
+            animator.SetFloat("Speed", currentVelocity.magnitude / maxMoveSpeed * 2f); // Adjusted animation sync
         }
 
         if (Input.GetKeyDown(KeyCode.K))
         {
             animator.SetTrigger("Kick");
         }
-
-        moveDirection = inputDirection; // Store movement input
     }
 
     void FixedUpdate()
     {
         if (moveDirection.magnitude > 0)
         {
-            // Accelerate towards max speed
-            currentVelocity = Vector3.Lerp(currentVelocity, moveDirection * maxMoveSpeed, Time.fixedDeltaTime * acceleration);
+            // Apply velocity directly for better response
+            currentVelocity = moveDirection * maxMoveSpeed;
         }
         else
         {
-            // Decelerate smoothly
+            // Decelerate smoothly when no input is given
             currentVelocity = Vector3.Lerp(currentVelocity, Vector3.zero, Time.fixedDeltaTime * deceleration);
         }
 
-        // Apply movement with inertia
         rb.MovePosition(rb.position + currentVelocity * Time.fixedDeltaTime);
 
         if (isInWater)
         {
-            // Simulate buoyancy
             rb.AddForce(Vector3.up * buoyancyForce, ForceMode.Acceleration);
 
-            // Allow vertical swimming
             if (Input.GetKey(KeyCode.Space))
             {
                 rb.velocity = new Vector3(rb.velocity.x, verticalSwimSpeed, rb.velocity.z);
@@ -93,7 +88,7 @@ public class PlayerMovement : MonoBehaviour
         {
             isInWater = true;
             rb.useGravity = false;
-            rb.velocity = new Vector3(rb.velocity.x, 0, rb.velocity.z); // Reset downward velocity
+            rb.velocity = new Vector3(rb.velocity.x, 0, rb.velocity.z);
         }
     }
 
