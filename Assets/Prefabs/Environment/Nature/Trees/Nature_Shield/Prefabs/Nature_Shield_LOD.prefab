@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6409076}
   m_Layer: 0
   m_Name: Nature_Shield_LOD4
-  m_TagString: Untagged
+  m_TagString: Climbable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -99,11 +99,11 @@ MeshCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: 62f6e5410709ac341ad25c25c043fe8f, type: 3}
 --- !u!1 &132630
@@ -120,7 +120,7 @@ GameObject:
   - component: {fileID: 6407212}
   m_Layer: 0
   m_Name: Nature_Shield_LOD1
-  m_TagString: Untagged
+  m_TagString: Climbable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -205,11 +205,11 @@ MeshCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: 62f6e5410709ac341ad25c25c043fe8f, type: 3}
 --- !u!1 &154250
@@ -226,7 +226,7 @@ GameObject:
   - component: {fileID: 6453552}
   m_Layer: 0
   m_Name: Nature_Shield_LOD2
-  m_TagString: Untagged
+  m_TagString: Climbable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -311,11 +311,11 @@ MeshCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: 62f6e5410709ac341ad25c25c043fe8f, type: 3}
 --- !u!1 &174348
@@ -330,7 +330,7 @@ GameObject:
   - component: {fileID: 20590532}
   m_Layer: 0
   m_Name: Nature_Shield_LOD
-  m_TagString: Untagged
+  m_TagString: Climbable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -343,10 +343,10 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 174348}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.18071695, y: -0.32464585, z: 0.06338354, w: 0.92624456}
+  m_LocalRotation: {x: 0.18071792, y: -0.324647, z: 0.06338499, w: 0.9262439}
   m_LocalPosition: {x: 2.824, y: 2.289, z: -2.491}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 5, y: 5, z: 5}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 435268}
   - {fileID: 488726}
@@ -354,7 +354,7 @@ Transform:
   - {fileID: 494162}
   - {fileID: 429994}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 22.082, y: -38.63, z: 0.005}
 --- !u!205 &20590532
 LODGroup:
   m_ObjectHideFlags: 0
@@ -404,7 +404,7 @@ GameObject:
   - component: {fileID: 6472744}
   m_Layer: 0
   m_Name: Nature_Shield_LOD3
-  m_TagString: Untagged
+  m_TagString: Climbable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -489,11 +489,11 @@ MeshCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: 62f6e5410709ac341ad25c25c043fe8f, type: 3}
 --- !u!1 &184888
@@ -510,7 +510,7 @@ GameObject:
   - component: {fileID: 6401852}
   m_Layer: 0
   m_Name: Nature_Shield_LOD0
-  m_TagString: Untagged
+  m_TagString: Climbable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -595,10 +595,10 @@ MeshCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: 62f6e5410709ac341ad25c25c043fe8f, type: 3}

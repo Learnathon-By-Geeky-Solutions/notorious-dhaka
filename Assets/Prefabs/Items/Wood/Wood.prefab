@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 8766550463523408215}
   - component: {fileID: -4643499867275691451}
   - component: {fileID: 4262388085839313460}
-  - component: {fileID: 2902657023605795433}
   - component: {fileID: 9134216876224676354}
   m_Layer: 0
   m_Name: Wood
@@ -33,7 +32,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0.6980316, y: -0.09001619, z: 0.090860546, w: 0.7045519}
   m_LocalPosition: {x: -0, y: 0, z: 0.018}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 5, y: 5, z: 5}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
@@ -125,18 +124,6 @@ MonoBehaviour:
   item: {fileID: 11400000, guid: 7364736d388a35448b049c3b22f1ffb6, type: 2}
   storage: {fileID: 0}
 --- !u!114 &4262388085839313460
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1871775975219898785}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b514c414d2bf91d41befc46bd0898b4d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &2902657023605795433
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

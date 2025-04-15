@@ -2882,8 +2882,30 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 6a60c93af261d7d49a447820c37e918b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1670757361}
   m_SourcePrefab: {fileID: 100100000, guid: 6a60c93af261d7d49a447820c37e918b, type: 3}
+--- !u!1 &1670757360 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 6a60c93af261d7d49a447820c37e918b, type: 3}
+  m_PrefabInstance: {fileID: 1670757359}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1670757361
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1670757360}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84e42eba52297ba46b728ed2f6b20c9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  collectedData:
+    dataPoints: []
 --- !u!1001 &1684617855
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3096,7 +3118,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1338433002867418356, guid: ec05d298df4658b489b91b4275e758b4, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3184323629208247566, guid: ec05d298df4658b489b91b4275e758b4, type: 3}
       propertyPath: m_LocalScale.x
@@ -3257,6 +3279,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 65702495048144492, guid: b0764688b8b0a2940a1708c8631f5f33, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: b0764688b8b0a2940a1708c8631f5f33, type: 3}
       propertyPath: m_Name
       value: RivansWalk
@@ -3303,6 +3329,8 @@ PlayableDirector:
   - key: {fileID: -7614734858065999856, guid: 1011ce65631c99d4494e0178a4b92f97, type: 2}
     value: {fileID: 961739754}
   - key: {fileID: -5081360566322841438, guid: 1011ce65631c99d4494e0178a4b92f97, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: 6355595270649448748, guid: 1011ce65631c99d4494e0178a4b92f97, type: 2}
     value: {fileID: 0}
   m_ExposedReferences:
     m_References: []
@@ -3652,7 +3680,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1338433002867418356, guid: ec05d298df4658b489b91b4275e758b4, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3184323629208247566, guid: ec05d298df4658b489b91b4275e758b4, type: 3}
       propertyPath: m_LocalScale.x

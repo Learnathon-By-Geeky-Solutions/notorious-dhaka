@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using PlayerStatus; // This allows direct use of PlayerStatusManager without full namespace each time
 
 public class SkeletonAI : MonoBehaviour
 {
@@ -44,7 +45,6 @@ public class SkeletonAI : MonoBehaviour
                 AttackPlayer();
             }
         }
-
         else if (distance <= detectionRange)
         {
             MoveTowardsPlayer();
@@ -58,8 +58,11 @@ public class SkeletonAI : MonoBehaviour
 
         rb.MovePosition(rb.position + moveDirection * moveSpeed * Time.deltaTime);
 
-        transform.rotation = Quaternion.Slerp(transform.rotation,
-            Quaternion.LookRotation(moveDirection), 5f * Time.deltaTime);
+        transform.rotation = Quaternion.Slerp(
+            transform.rotation,
+            Quaternion.LookRotation(moveDirection),
+            5f * Time.deltaTime
+        );
 
         animator.SetTrigger("Walk");
     }
@@ -71,19 +74,25 @@ public class SkeletonAI : MonoBehaviour
         lastAttackTime = Time.time;
         animator.SetTrigger("Attack");
 
+        // You can use an animation event to call DealDamage at the right frame
         DealDamage();
     }
 
     public void DealDamage()
     {
         if (player == null) return;
+
         if (Vector3.Distance(transform.position, player.position) <= stopDistance + 0.5f)
         {
-            PlayerStatus.PlayerHealth playerHealth = player.GetComponent<PlayerStatus.PlayerHealth>();
+            PlayerStatusManager playerHealth = player.GetComponent<PlayerStatusManager>();
             if (playerHealth != null)
             {
                 playerHealth.TakeDamage(attackDamage);
                 Debug.Log("Player hit by skeleton! Health reduced.");
+            }
+            else
+            {
+                Debug.LogWarning("PlayerStatusManager not found on player.");
             }
         }
     }
@@ -98,9 +107,11 @@ public class SkeletonAI : MonoBehaviour
             Die();
         }
     }
+
     private void Die()
     {
         animator.SetTrigger("Die");
         rb.velocity = Vector3.zero;
+        // Optionally: Destroy(gameObject, delay);
     }
 }

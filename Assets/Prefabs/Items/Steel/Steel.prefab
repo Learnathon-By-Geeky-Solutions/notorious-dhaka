@@ -26,11 +26,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0384748d81833f942bf938f3ec529468, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 18.518
+      value: 19.043
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0384748d81833f942bf938f3ec529468, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -129.65
+      value: -128.126
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0384748d81833f942bf938f3ec529468, type: 3}
       propertyPath: m_LocalRotation.w
@@ -70,7 +70,11 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 871ac687c24284240adc020820577b6e, type: 2}
     - target: {fileID: 919132149155446097, guid: 0384748d81833f942bf938f3ec529468, type: 3}
       propertyPath: m_Name
-      value: steel
+      value: Steel
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0384748d81833f942bf938f3ec529468, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

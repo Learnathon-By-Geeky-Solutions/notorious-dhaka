@@ -18,10 +18,12 @@ public class PlayerEnemyTracker : MonoBehaviour
             Debug.LogError("Rigidbody not found! Adding one now...");
             rb = gameObject.AddComponent<Rigidbody>();
         }
+
         rb.useGravity = true;
         rb.isKinematic = false;
         rb.freezeRotation = true;
     }
+
     void Update()
     {
         if (targetEnemy != null)
@@ -32,6 +34,8 @@ public class PlayerEnemyTracker : MonoBehaviour
 
     void FaceEnemy()
     {
+        if (targetEnemy == null) return;
+
         Vector3 direction = (targetEnemy.position - transform.position);
         direction.y = 0;
         Quaternion lookRotation = Quaternion.LookRotation(direction);
@@ -40,7 +44,7 @@ public class PlayerEnemyTracker : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Enemy"))
+        if (other.CompareTag("Enemy") && other.transform != null)
         {
             enemiesInRange.Add(other.transform);
             UpdateTargetEnemy();
@@ -49,14 +53,17 @@ public class PlayerEnemyTracker : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Enemy"))
+        if (other.CompareTag("Enemy") && other.transform != null)
         {
             enemiesInRange.Remove(other.transform);
             UpdateTargetEnemy();
         }
     }
+
     void UpdateTargetEnemy()
     {
+        enemiesInRange.RemoveAll(enemy => enemy == null);
+
         if (enemiesInRange.Count == 0)
         {
             targetEnemy = null;
@@ -65,8 +72,11 @@ public class PlayerEnemyTracker : MonoBehaviour
 
         float closestDistance = Mathf.Infinity;
         Transform closestEnemy = null;
+
         foreach (Transform enemy in enemiesInRange)
         {
+            if (enemy == null) continue;
+
             float distance = Vector3.Distance(transform.position, enemy.position);
             if (distance < closestDistance)
             {

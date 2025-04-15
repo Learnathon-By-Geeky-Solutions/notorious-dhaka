@@ -42,24 +42,24 @@ namespace Manager
 
         private bool IsRecipeMatch(CraftingRecipe recipe, List<Items> nearbyItems)
         {
-            Dictionary<string, int> nearbyItemCounts = new Dictionary<string, int>();
+            Dictionary<Items, int> nearbyItemCounts = new Dictionary<Items, int>();
 
             foreach (Items item in nearbyItems)
             {
-                if (nearbyItemCounts.ContainsKey(item.name))
-                    nearbyItemCounts[item.name]++;
+                if (nearbyItemCounts.ContainsKey(item))
+                    nearbyItemCounts[item]++;
                 else
-                    nearbyItemCounts[item.name] = 1;
+                    nearbyItemCounts[item] = 1;
             }
 
-            Dictionary<string, int> recipeItemCounts = new Dictionary<string, int>();
+            Dictionary<Items, int> recipeItemCounts = new Dictionary<Items, int>();
 
             foreach (Items inputItem in recipe.inputItems)
             {
-                if (recipeItemCounts.ContainsKey(inputItem.name))
-                    recipeItemCounts[inputItem.name]++;
+                if (recipeItemCounts.ContainsKey(inputItem))
+                    recipeItemCounts[inputItem]++;
                 else
-                    recipeItemCounts[inputItem.name] = 1;
+                    recipeItemCounts[inputItem] = 1;
             }
 
             if (nearbyItemCounts.Count != recipeItemCounts.Count)
@@ -72,7 +72,7 @@ namespace Manager
             {
                 if (!nearbyItemCounts.ContainsKey(entry.Key) || nearbyItemCounts[entry.Key] != entry.Value)
                 {
-                    Debug.Log($"Item mismatch: {entry.Key} expected {entry.Value}, found {nearbyItemCounts.GetValueOrDefault(entry.Key, 0)}");
+                    Debug.Log($"Item mismatch: {entry.Key.name} expected {entry.Value}, found {nearbyItemCounts.GetValueOrDefault(entry.Key, 0)}");
                     return false;
                 }
             }
@@ -102,27 +102,24 @@ namespace Manager
 
         private void RemoveItems(List<Items> nearbyItems, List<GameObject> nearbyItemObjects, List<Items> inputItems)
         {
-            Dictionary<string, int> itemsToRemove = new Dictionary<string, int>();
-
-            foreach (Items inputItem in inputItems)
-            {
-                if (itemsToRemove.ContainsKey(inputItem.name))
-                    itemsToRemove[inputItem.name]++;
-                else
-                    itemsToRemove[inputItem.name] = 1;
-            }
+            List<Items> itemsToRemove = new List<Items>(inputItems);
 
             for (int i = nearbyItems.Count - 1; i >= 0; i--)
             {
-                string itemName = nearbyItems[i].name;
-                if (itemsToRemove.ContainsKey(itemName) && itemsToRemove[itemName] > 0)
-                {
-                    // Destroy the actual GameObject in the scene
-                    Destroy(nearbyItemObjects[i]);
+                Items currentItem = nearbyItems[i];
 
-                    itemsToRemove[itemName]--;
-                    nearbyItems.RemoveAt(i);
-                    nearbyItemObjects.RemoveAt(i); // Ensure the game object list stays in sync
+                for (int j = 0; j < itemsToRemove.Count; j++)
+                {
+                    if (currentItem == itemsToRemove[j])
+                    {
+                        if (nearbyItemObjects[i] != null)
+                            Object.Destroy(nearbyItemObjects[i]);
+
+                        itemsToRemove.RemoveAt(j);
+                        nearbyItems.RemoveAt(i);
+                        nearbyItemObjects.RemoveAt(i);
+                        break;
+                    }
                 }
             }
         }

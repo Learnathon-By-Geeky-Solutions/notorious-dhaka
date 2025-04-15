@@ -11,7 +11,6 @@ namespace Crafting
     {
         public CraftingManager craftingManager;
 
-        // Store items and their respective game objects
         private readonly List<GameObject> nearbyItemObjects = new();
         private readonly List<Items> nearbyItems = new();
 
@@ -21,7 +20,7 @@ namespace Crafting
             if (itemObject != null && itemObject.item != null)
             {
                 nearbyItems.Add(itemObject.item);
-                nearbyItemObjects.Add(other.gameObject); // Track the actual object
+                nearbyItemObjects.Add(other.gameObject);
                 Debug.Log($"Item added to crafting plate: {itemObject.item.name}");
             }
             else
@@ -35,13 +34,13 @@ namespace Crafting
             Details itemObject = other.GetComponent<Details>();
             if (itemObject != null && itemObject.item != null)
             {
-                int index = nearbyItems.IndexOf(itemObject.item);
+                int index = nearbyItemObjects.IndexOf(other.gameObject);
                 if (index >= 0)
                 {
                     nearbyItems.RemoveAt(index);
-                    nearbyItemObjects.RemoveAt(index); // Remove corresponding GameObject
+                    nearbyItemObjects.RemoveAt(index);
+                    Debug.Log($"Item removed from crafting plate: {itemObject.item.name}");
                 }
-                Debug.Log($"Item removed from crafting plate: {itemObject.item.name}");
             }
             else
             {
@@ -55,7 +54,7 @@ namespace Crafting
             {
                 if (craftingManager != null)
                 {
-                    craftingManager.TryCraft(nearbyItems, nearbyItemObjects); // Pass objects too
+                    craftingManager.TryCraft(nearbyItems, nearbyItemObjects);
                     Debug.Log("Crafting Attempted");
                 }
                 else
