@@ -791,7 +791,7 @@ MonoBehaviour:
     m_EaseInDuration: 0
     m_EaseOutDuration: 0
     m_BlendInDuration: -1
-    m_BlendOutDuration: -1
+    m_BlendOutDuration: 0.31033063144426265
     m_MixInCurve:
       serializedVersion: 2
       m_Curve: []
@@ -815,15 +815,15 @@ MonoBehaviour:
     m_PreExtrapolationTime: 0
     m_DisplayName: Recorded (5)
   - m_Version: 1
-    m_Start: 20.76033063144427
+    m_Start: 20.45
     m_ClipIn: 0
     m_Asset: {fileID: 3704424831936816930}
-    m_Duration: 4.783333333333333
+    m_Duration: 5.093663964777601
     m_TimeScale: 1
     m_ParentTrack: {fileID: -7614734858065999856}
     m_EaseInDuration: 0
     m_EaseOutDuration: 0
-    m_BlendInDuration: -1
+    m_BlendInDuration: 0.31033063144426265
     m_BlendOutDuration: -1
     m_MixInCurve:
       serializedVersion: 2
@@ -851,7 +851,7 @@ MonoBehaviour:
     m_Start: 25.5436639647776
     m_ClipIn: 0
     m_Asset: {fileID: 619015461986294867}
-    m_Duration: 2.0500000000000007
+    m_Duration: 3.423002701889068
     m_TimeScale: 1
     m_ParentTrack: {fileID: -7614734858065999856}
     m_EaseInDuration: 0
@@ -895,14 +895,14 @@ MonoBehaviour:
     m_Recordable: 1
     m_PostExtrapolationMode: 1
     m_PreExtrapolationMode: 1
-    m_PostExtrapolationTime: 0.01666666666669059
+    m_PostExtrapolationTime: 0
     m_PreExtrapolationTime: 0
     m_DisplayName: Recorded (7)
   - m_Version: 1
-    m_Start: 27.610330631444292
-    m_ClipIn: 0
+    m_Start: 28.96666666666667
+    m_ClipIn: 0.15633603522237394
     m_Asset: {fileID: 3411002482137826443}
-    m_Duration: 6.699999999999999
+    m_Duration: 6.543663964777625
     m_TimeScale: 1
     m_ParentTrack: {fileID: -7614734858065999856}
     m_EaseInDuration: 0
@@ -911,25 +911,7 @@ MonoBehaviour:
     m_BlendOutDuration: -1
     m_MixInCurve:
       serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
+      m_Curve: []
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -1173,7 +1155,7 @@ MonoBehaviour:
   m_Name: AnimationPlayableAsset
   m_EditorClassIdentifier: 
   m_Clip: {fileID: 7400000, guid: 691abe07cd80cd14ebac441119574dca, type: 2}
-  m_Position: {x: 545.3521, y: 259.45972, z: 322.7711}
+  m_Position: {x: 545.3522, y: 269.45844, z: 322.77112}
   m_EulerAngles: {x: 0, y: 23.375, z: 0}
   m_UseTrackMatchFields: 1
   m_MatchTargetFields: 63
@@ -2724,8 +2706,8 @@ MonoBehaviour:
   m_Name: AnimationPlayableAsset(Clone)
   m_EditorClassIdentifier: 
   m_Clip: {fileID: 7400000, guid: f9ec3c288cb2fb74bb1c1991bb50f3ed, type: 2}
-  m_Position: {x: 678.26166, y: 257.3778, z: 280.4814}
-  m_EulerAngles: {x: 0, y: 105.197, z: 0}
+  m_Position: {x: 541.4826, y: 270.5214, z: 306.366}
+  m_EulerAngles: {x: 0, y: 110.167, z: 0}
   m_UseTrackMatchFields: 1
   m_MatchTargetFields: 63
   m_RemoveStartOffset: 1
@@ -2746,7 +2728,7 @@ MonoBehaviour:
   m_Name: AnimationPlayableAsset
   m_EditorClassIdentifier: 
   m_Clip: {fileID: 7400000, guid: 9db802a43b48ee642ba6065b02ac6d5e, type: 2}
-  m_Position: {x: 331.7216, y: 256.8055, z: 388.2971}
+  m_Position: {x: 331.7216, y: 272.2028, z: 388.29706}
   m_EulerAngles: {x: 0, y: 105.197, z: 0}
   m_UseTrackMatchFields: 1
   m_MatchTargetFields: 63
@@ -3243,7 +3225,7 @@ MonoBehaviour:
   m_Name: AnimationPlayableAsset
   m_EditorClassIdentifier: 
   m_Clip: {fileID: 7400000, guid: 277b483c84df33c4e9ee4026ac2ec255, type: 2}
-  m_Position: {x: 544, y: 253, z: 321}
+  m_Position: {x: 544, y: 285.40884, z: 321}
   m_EulerAngles: {x: 0, y: 21, z: 0}
   m_UseTrackMatchFields: 1
   m_MatchTargetFields: 63
@@ -3282,7 +3264,7 @@ MonoBehaviour:
   m_Name: AnimationPlayableAsset
   m_EditorClassIdentifier: 
   m_Clip: {fileID: 7400000, guid: aba0a2cbb0a85e240acfd2a5b8e5318f, type: 2}
-  m_Position: {x: 433.57474, y: 254.55386, z: 72.382286}
+  m_Position: {x: 433.57474, y: 271.54807, z: 72.382286}
   m_EulerAngles: {x: 0, y: 22.033, z: 0}
   m_UseTrackMatchFields: 1
   m_MatchTargetFields: 63
@@ -3370,7 +3352,7 @@ MonoBehaviour:
   m_Name: AnimationPlayableAsset
   m_EditorClassIdentifier: 
   m_Clip: {fileID: 7400000, guid: 3aedece9882e6a742b2d05aa28a8d789, type: 2}
-  m_Position: {x: 448, y: 251, z: 107}
+  m_Position: {x: 448, y: 271.16412, z: 106.999115}
   m_EulerAngles: {x: 0, y: 21, z: 0}
   m_UseTrackMatchFields: 1
   m_MatchTargetFields: 63
@@ -3392,7 +3374,7 @@ MonoBehaviour:
   m_Name: AnimationPlayableAsset(Clone)
   m_EditorClassIdentifier: 
   m_Clip: {fileID: 7400000, guid: 43766e8e40f3ce14f8a89f4a04508b61, type: 2}
-  m_Position: {x: 330.52963, y: 256.8568, z: 389.72186}
+  m_Position: {x: 330.52954, y: 270.276, z: 389.72186}
   m_EulerAngles: {x: 0, y: 2.179, z: 0}
   m_UseTrackMatchFields: 1
   m_MatchTargetFields: 63
@@ -4406,7 +4388,7 @@ MonoBehaviour:
     m_EaseInDuration: 0
     m_EaseOutDuration: 0
     m_BlendInDuration: 0.0999999999999942
-    m_BlendOutDuration: 0.5500000000000098
+    m_BlendOutDuration: 0.250000000000006
     m_MixInCurve:
       serializedVersion: 2
       m_Curve: []
@@ -4430,15 +4412,15 @@ MonoBehaviour:
     m_PreExtrapolationTime: 0
     m_DisplayName: Rivan Run
   - m_Version: 1
-    m_Start: 1.4833333333333296
+    m_Start: 1.7833333333333334
     m_ClipIn: 0.3666666666666667
     m_Asset: {fileID: 2889678665649770360}
-    m_Duration: 1.483333333333333
+    m_Duration: 1.0166666666666666
     m_TimeScale: 1
     m_ParentTrack: {fileID: 5753504955932276544}
     m_EaseInDuration: 0
     m_EaseOutDuration: 0
-    m_BlendInDuration: 0.5500000000000098
+    m_BlendInDuration: 0.250000000000006
     m_BlendOutDuration: -1
     m_MixInCurve:
       serializedVersion: 2
@@ -4477,7 +4459,7 @@ MonoBehaviour:
     m_Recordable: 0
     m_PostExtrapolationMode: 1
     m_PreExtrapolationMode: 1
-    m_PostExtrapolationTime: 16.19366396477755
+    m_PostExtrapolationTime: 15.806336035222305
     m_PreExtrapolationTime: 0
     m_DisplayName: Rivan Kneel
   - m_Version: 1
@@ -4598,15 +4580,15 @@ MonoBehaviour:
     m_PreExtrapolationTime: 0
     m_DisplayName: Rivan On Knees
   - m_Version: 1
-    m_Start: 21.47699729811088
-    m_ClipIn: 4.571167701156696
+    m_Start: 20.45
+    m_ClipIn: 3.5441704030458148
     m_Asset: {fileID: -2550037577704052757}
-    m_Duration: 5.13333333333334
+    m_Duration: 7.916666666666668
     m_TimeScale: 1
     m_ParentTrack: {fileID: 5753504955932276544}
     m_EaseInDuration: 0
     m_EaseOutDuration: 0
-    m_BlendInDuration: 0.43333333333338686
+    m_BlendInDuration: 0.6500000000000021
     m_BlendOutDuration: -1
     m_MixInCurve:
       serializedVersion: 2
@@ -4627,20 +4609,20 @@ MonoBehaviour:
     m_Recordable: 0
     m_PostExtrapolationMode: 1
     m_PreExtrapolationMode: 1
-    m_PostExtrapolationTime: 7.098022095998736
+    m_PostExtrapolationTime: 5.34168606077629
     m_PreExtrapolationTime: 0
     m_DisplayName: Rivan Walk Backwards
   - m_Version: 1
-    m_Start: 19.16033063144421
-    m_ClipIn: 0.14999999999984936
+    m_Start: 18.606336035222306
+    m_ClipIn: 1.0730027018889707
     m_Asset: {fileID: -4273461438253636914}
-    m_Duration: 2.750000000000057
+    m_Duration: 2.4936639647776957
     m_TimeScale: 1
     m_ParentTrack: {fileID: 5753504955932276544}
     m_EaseInDuration: 0
     m_EaseOutDuration: 0
     m_BlendInDuration: -1
-    m_BlendOutDuration: 0.43333333333338686
+    m_BlendOutDuration: 0.6500000000000021
     m_MixInCurve:
       serializedVersion: 2
       m_Curve:
@@ -4893,7 +4875,7 @@ MonoBehaviour:
   m_Name: AnimationPlayableAsset
   m_EditorClassIdentifier: 
   m_Clip: {fileID: 7400000, guid: 681f1312d011a5e4fb169dd9adccf2dc, type: 2}
-  m_Position: {x: 334.68735, y: 257.8334, z: 396.07455}
+  m_Position: {x: 334.68738, y: 262.15695, z: 396.07455}
   m_EulerAngles: {x: 0, y: -3.71, z: 0}
   m_UseTrackMatchFields: 1
   m_MatchTargetFields: 63
@@ -5429,7 +5411,7 @@ AnimationClip:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
-        time: 0
+        time: 0.31033063
         value: {x: 356.1052, y: 63.76136, z: 351.3796}
         inSlope: {x: 0, y: 0, z: 0}
         outSlope: {x: 0, y: 0, z: 0}
@@ -5446,7 +5428,7 @@ AnimationClip:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
-        time: 0
+        time: 0.31033063
         value: {x: -167.76569, y: -20.348785, z: 12.306091}
         inSlope: {x: 0, y: 0, z: 0}
         outSlope: {x: 0, y: 0, z: 0}
@@ -5455,7 +5437,7 @@ AnimationClip:
         inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
         outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
       - serializedVersion: 3
-        time: 0.95
+        time: 1.2603307
         value: {x: -176.05765, y: -17.201324, z: 28.76892}
         inSlope: {x: -12.835902, y: 4.8722277, z: 25.484314}
         outSlope: {x: -12.835902, y: 4.8722277, z: 25.484314}
@@ -5464,7 +5446,7 @@ AnimationClip:
         inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
         outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
       - serializedVersion: 3
-        time: 1.9
+        time: 2.2103305
         value: {x: -192.1539, y: -11.091553, z: 60.726288}
         inSlope: {x: -19.209066, y: 7.2913337, z: 38.13754}
         outSlope: {x: -19.209066, y: 7.2913337, z: 38.13754}
@@ -5473,7 +5455,7 @@ AnimationClip:
         inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
         outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
       - serializedVersion: 3
-        time: 2.6166666
+        time: 2.9269972
         value: {x: -208.07275, y: -5.049103, z: 92.33148}
         inSlope: {x: -14.945949, y: 5.6731644, z: 29.67359}
         outSlope: {x: -14.945949, y: 5.6731644, z: 29.67359}
@@ -5482,7 +5464,7 @@ AnimationClip:
         inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
         outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
       - serializedVersion: 3
-        time: 3.6
+        time: 3.9103305
         value: {x: -217.56201, y: -1.4471741, z: 111.17139}
         inSlope: {x: -15.142675, y: 5.747817, z: 30.064152}
         outSlope: {x: -15.142675, y: 5.747817, z: 30.064152}
@@ -5491,7 +5473,7 @@ AnimationClip:
         inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
         outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
       - serializedVersion: 3
-        time: 4.4
+        time: 4.710331
         value: {x: -235.0772, y: 5.201172, z: 145.94589}
         inSlope: {x: -21.958767, y: 8.335038, z: 43.596764}
         outSlope: {x: -21.958767, y: 8.335038, z: 43.596764}
@@ -5500,7 +5482,7 @@ AnimationClip:
         inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
         outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
       - serializedVersion: 3
-        time: 4.7833333
+        time: 5.093664
         value: {x: -243.54655, y: 8.415955, z: 162.7609}
         inSlope: {x: 0, y: 0, z: 0}
         outSlope: {x: 0, y: 0, z: 0}
@@ -5546,7 +5528,7 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 4.7833333
+    m_StopTime: 5.093664
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -5567,7 +5549,7 @@ AnimationClip:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
-        time: 0
+        time: 0.31033063
         value: -167.76569
         inSlope: 0
         outSlope: 0
@@ -5576,7 +5558,7 @@ AnimationClip:
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 0.95
+        time: 1.2603307
         value: -176.05765
         inSlope: -12.835902
         outSlope: -12.835902
@@ -5585,7 +5567,7 @@ AnimationClip:
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 1.9
+        time: 2.2103305
         value: -192.1539
         inSlope: -19.209066
         outSlope: -19.209066
@@ -5594,7 +5576,7 @@ AnimationClip:
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 2.6166666
+        time: 2.9269972
         value: -208.07275
         inSlope: -14.945949
         outSlope: -14.945949
@@ -5603,7 +5585,7 @@ AnimationClip:
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 3.6
+        time: 3.9103305
         value: -217.56201
         inSlope: -15.142675
         outSlope: -15.142675
@@ -5612,7 +5594,7 @@ AnimationClip:
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 4.4
+        time: 4.710331
         value: -235.0772
         inSlope: -21.958767
         outSlope: -21.958767
@@ -5621,7 +5603,7 @@ AnimationClip:
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 4.7833333
+        time: 5.093664
         value: -243.54655
         inSlope: 0
         outSlope: 0
@@ -5642,7 +5624,7 @@ AnimationClip:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
-        time: 0
+        time: 0.31033063
         value: -20.348785
         inSlope: 0
         outSlope: 0
@@ -5651,7 +5633,7 @@ AnimationClip:
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 0.95
+        time: 1.2603307
         value: -17.201324
         inSlope: 4.8722277
         outSlope: 4.8722277
@@ -5660,7 +5642,7 @@ AnimationClip:
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 1.9
+        time: 2.2103305
         value: -11.091553
         inSlope: 7.2913337
         outSlope: 7.2913337
@@ -5669,7 +5651,7 @@ AnimationClip:
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 2.6166666
+        time: 2.9269972
         value: -5.049103
         inSlope: 5.6731644
         outSlope: 5.6731644
@@ -5678,7 +5660,7 @@ AnimationClip:
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 3.6
+        time: 3.9103305
         value: -1.4471741
         inSlope: 5.747817
         outSlope: 5.747817
@@ -5687,7 +5669,7 @@ AnimationClip:
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 4.4
+        time: 4.710331
         value: 5.201172
         inSlope: 8.335038
         outSlope: 8.335038
@@ -5696,7 +5678,7 @@ AnimationClip:
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 4.7833333
+        time: 5.093664
         value: 8.415955
         inSlope: 0
         outSlope: 0
@@ -5717,7 +5699,7 @@ AnimationClip:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
-        time: 0
+        time: 0.31033063
         value: 12.306091
         inSlope: 0
         outSlope: 0
@@ -5726,7 +5708,7 @@ AnimationClip:
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 0.95
+        time: 1.2603307
         value: 28.76892
         inSlope: 25.484314
         outSlope: 25.484314
@@ -5735,7 +5717,7 @@ AnimationClip:
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 1.9
+        time: 2.2103305
         value: 60.726288
         inSlope: 38.13754
         outSlope: 38.13754
@@ -5744,7 +5726,7 @@ AnimationClip:
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 2.6166666
+        time: 2.9269972
         value: 92.33148
         inSlope: 29.67359
         outSlope: 29.67359
@@ -5753,7 +5735,7 @@ AnimationClip:
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 3.6
+        time: 3.9103305
         value: 111.17139
         inSlope: 30.064152
         outSlope: 30.064152
@@ -5762,7 +5744,7 @@ AnimationClip:
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 4.4
+        time: 4.710331
         value: 145.94589
         inSlope: 43.596764
         outSlope: 43.596764
@@ -5771,7 +5753,7 @@ AnimationClip:
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 4.7833333
+        time: 5.093664
         value: 162.7609
         inSlope: 0
         outSlope: 0
@@ -5792,7 +5774,7 @@ AnimationClip:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
-        time: 0
+        time: 0.31033063
         value: 356.1052
         inSlope: 0
         outSlope: 0
@@ -5813,7 +5795,7 @@ AnimationClip:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
-        time: 0
+        time: 0.31033063
         value: 63.76136
         inSlope: 0
         outSlope: 0
@@ -5834,7 +5816,7 @@ AnimationClip:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
-        time: 0
+        time: 0.31033063
         value: 351.3796
         inSlope: 0
         outSlope: 0
