@@ -11,6 +11,10 @@ TagManager:
   - Vehicle
   - NPC
   - Water
+  - Climbable
+  - Pushable
+  - Destructible
+  - SceneCamera
   layers:
   - Default
   - TransparentFX
@@ -21,9 +25,9 @@ TagManager:
   - Player
   - Vehicle
   - Glow
-  - 
-  - 
-  - 
+  - Ayesha
+  - Ground
+  - GPS
   - 
   - 
   - 
