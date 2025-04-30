@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PlayerSwim : MonoBehaviour
 {
@@ -17,7 +17,7 @@ public class PlayerSwim : MonoBehaviour
 
     private static readonly int StartSwimmingTrigger = Animator.StringToHash("StartSwimming");
     private static readonly int SwimTrigger = Animator.StringToHash("Swim");
-    private static readonly int StopSwimmingTrigger = Animator.StringToHash("StopSwimming"); // Ensures proper exit
+    private static readonly int StopSwimmingTrigger = Animator.StringToHash("StopSwimming");
 
     private void Awake()
     {
@@ -42,8 +42,7 @@ public class PlayerSwim : MonoBehaviour
         rb.velocity = Vector3.zero;
         rb.drag = waterDrag;
 
-        anim.SetTrigger(StartSwimmingTrigger); // Floating Animation
-
+        anim.SetTrigger(StartSwimmingTrigger);
         waterSurfaceY = transform.position.y;
     }
 
@@ -56,25 +55,27 @@ public class PlayerSwim : MonoBehaviour
         rb.velocity = Vector3.zero;
         rb.drag = 0;
 
-        anim.ResetTrigger(StartSwimmingTrigger); // Prevent floating animation from interfering
+        anim.ResetTrigger(StartSwimmingTrigger);
         anim.ResetTrigger(SwimTrigger);
-        anim.SetTrigger(StopSwimmingTrigger); // Transitions back to Idle
+        anim.SetTrigger(StopSwimmingTrigger);
     }
 
     private void HandleSwimming()
     {
         float horizontal = Input.GetAxis("Horizontal");
         float vertical = Input.GetAxis("Vertical");
-        float ascend = Input.GetKey(KeyCode.Space) ? 1 : 0;
-        float descend = Input.GetKey(KeyCode.LeftControl) ? -1 : 0;
 
-        Vector3 swimDirection = new Vector3(horizontal, ascend + descend, vertical).normalized;
+        // ❌ Completely ignore Space / LeftControl to block up/down
+        Vector3 swimDirection = new Vector3(horizontal, 0f, vertical).normalized;
         isMoving = swimDirection.magnitude > 0.1f;
 
         if (isMoving)
         {
-            rb.velocity = swimDirection * swimSpeed;
-            anim.SetTrigger(SwimTrigger); // Swimming Animation
+            Vector3 velocity = swimDirection * swimSpeed;
+            velocity.y = rb.velocity.y; // Preserve buoyancy
+            rb.velocity = velocity;
+
+            anim.SetTrigger(SwimTrigger);
 
             Vector3 moveDirection = new Vector3(horizontal, 0, vertical);
             if (moveDirection.magnitude > 0.1f)
@@ -86,9 +87,10 @@ public class PlayerSwim : MonoBehaviour
         else
         {
             anim.ResetTrigger(SwimTrigger);
-            anim.SetTrigger(StartSwimmingTrigger); // Floating Animation when idle
+            anim.SetTrigger(StartSwimmingTrigger);
         }
 
+        // ✅ Keep floating at target depth
         float targetDepth = waterSurfaceY + targetDepthOffset;
         float depthDifference = targetDepth - transform.position.y;
         rb.AddForce(Vector3.up * depthDifference * floatingForce, ForceMode.Acceleration);

@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d86dd52ed6dfebf46aba3946e0503492, type: 3}
   m_Name: Mum
   m_EditorClassIdentifier: 
-  name: Mum
-  icon: {fileID: 21300000, guid: 0d38ffc045f732a408c239eb6578ef9c, type: 3}
+  itemName: 
+  icon: {fileID: 21300000, guid: c4589b336abb5d846babddca369e72f7, type: 3}
   prefab: {fileID: 5847394672577369942, guid: 15962210d3cb9014485695f517114cb8, type: 3}
   description: Water Bottle
+  itemType: 3
+  healAmount: 10

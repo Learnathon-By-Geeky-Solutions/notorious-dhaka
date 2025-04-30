@@ -18,9 +18,9 @@ public class RivanDataReceiver : MonoBehaviour
         {
             dataPoints = new string[]
             {
-                "Scavenger Location",
-                "Power Core Coordinates",
-                "Encrypted Signal Logs"
+                "Location: Rabindra Shorobor",
+                "Clan: Bongal",
+                "Leader: Ibrahim"
             }
         };
 

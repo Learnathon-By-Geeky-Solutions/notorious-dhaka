@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1507636620937791839}
   - component: {fileID: 8351729162171297871}
   - component: {fileID: 6909673858744029022}
-  m_Layer: 0
+  m_Layer: 4
   m_Name: WaterBlock_50m
   m_TagString: Water
   m_Icon: {fileID: 0}
@@ -100,7 +100,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3

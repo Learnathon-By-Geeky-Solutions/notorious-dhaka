@@ -3,8 +3,10 @@ using UnityEngine;
 
 public class PunchHitbox : MonoBehaviour
 {
+    [Header("Punch Settings")]
     public int punchDamage = 10;
     public float activeTime = 0.2f;
+
     private Collider hitboxCollider;
 
     private void Awake()
@@ -14,12 +16,11 @@ public class PunchHitbox : MonoBehaviour
         if (hitboxCollider != null)
             hitboxCollider.enabled = false;
         else
-            Debug.LogError("Hitbox Collider not found on " + gameObject.name);
+            Debug.LogError("[PunchHitbox] Hitbox Collider not found on " + gameObject.name);
     }
 
     public async void ActivateHitboxAsync()
     {
-    
         if (hitboxCollider == null || this == null || gameObject == null)
             return;
 
@@ -27,7 +28,6 @@ public class PunchHitbox : MonoBehaviour
 
         await Task.Delay(Mathf.RoundToInt(activeTime * 1000));
 
-       
         if (hitboxCollider == null || this == null || gameObject == null)
             return;
 
@@ -39,9 +39,14 @@ public class PunchHitbox : MonoBehaviour
         if (other.CompareTag("Enemy"))
         {
             EnemyHealth enemy = other.GetComponent<EnemyHealth>();
+
             if (enemy != null)
             {
                 enemy.TakeDamage(punchDamage);
+            }
+            else
+            {
+                Debug.LogWarning("[PunchHitbox] Enemy does not have EnemyHealth script: " + other.gameObject.name);
             }
         }
     }

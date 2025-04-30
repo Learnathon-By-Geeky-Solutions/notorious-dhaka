@@ -1,22 +1,32 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
-public class EnemyHealth : MonoBehaviour
+public class EnemyHealth : MonoBehaviour, IDamageable
 {
+    [Header("Health Settings")]
     public int maxHealth = 100;
     private int currentHealth;
-    public Slider healthSlider;
-    private Animator animator;
     private bool isDead = false;
 
-    void Start()
+    [Header("UI")]
+    public Slider healthSlider;
+
+    private Animator animator;
+    private Collider enemyCollider;
+
+    private void Awake()
+    {
+        animator = GetComponent<Animator>();
+        enemyCollider = GetComponent<Collider>();
+
+        if (healthSlider == null)
+            healthSlider = GetComponentInChildren<Slider>();
+    }
+
+    private void Start()
     {
         currentHealth = maxHealth;
-        animator = GetComponent<Animator>();
-        if (healthSlider == null)
-        {
-            healthSlider = GetComponentInChildren<Slider>();
-        }
+
         if (healthSlider != null)
         {
             healthSlider.maxValue = maxHealth;
@@ -24,7 +34,7 @@ public class EnemyHealth : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning("Health Slider is missing!");
+            Debug.LogWarning("[EnemyHealth] Health Slider is missing on " + gameObject.name);
         }
     }
 
@@ -34,13 +44,9 @@ public class EnemyHealth : MonoBehaviour
 
         currentHealth -= damage;
         currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
+        Debug.Log("[EnemyHealth] " + gameObject.name + " Health: " + currentHealth);
 
-        Debug.Log(gameObject.name + " Health: " + currentHealth);
-
-        if (healthSlider != null)
-        {
-            healthSlider.value = currentHealth;
-        }
+        UpdateHealthUI();
 
         if (animator != null)
         {
@@ -53,19 +59,40 @@ public class EnemyHealth : MonoBehaviour
         }
     }
 
-    void Die()
+    private void UpdateHealthUI()
+    {
+        if (healthSlider != null)
+            healthSlider.value = currentHealth;
+    }
+
+    private void Die()
     {
         if (isDead) return;
 
         isDead = true;
-        Debug.Log(gameObject.name + " has died!");
+        Debug.Log("[EnemyHealth] " + gameObject.name + " has died!");
+        Debug.Log("[EnemyHealth] Dying object's Tag: " + gameObject.tag);
 
         if (animator != null)
         {
             animator.SetTrigger("Die");
         }
 
-        GetComponent<Collider>().enabled = false;
+        if (enemyCollider != null)
+        {
+            enemyCollider.enabled = false;
+        }
+
+        if (HonourManager.Instance != null)
+        {
+            HonourManager.Instance.RegisterKill(gameObject.tag);
+        }
+
         Destroy(gameObject, 2f);
+    }
+
+    public bool IsDead()
+    {
+        return isDead;
     }
 }

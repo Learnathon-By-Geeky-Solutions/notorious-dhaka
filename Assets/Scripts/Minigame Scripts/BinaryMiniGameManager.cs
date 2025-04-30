@@ -1,6 +1,7 @@
-using UnityEngine;
+﻿using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using System.Collections;
 using System.Collections.Generic;
 
 public class BinaryMiniGameManager : MonoBehaviour
@@ -11,6 +12,11 @@ public class BinaryMiniGameManager : MonoBehaviour
     public Transform bitContainer;
     public RivanDataReceiver dataReceiver;
 
+    [Header("Timer UI")]
+    public TMP_Text timerText;           // ✅ Drag in Inspector
+    public TMP_Text resultText;          // ✅ Drag in Inspector
+    public GameObject resultPanel;       // ✅ Drag in Inspector
+
     [Header("Bit Colors")]
     public Color defaultColor = Color.green;
     public Color clickedColor = Color.white;
@@ -18,10 +24,13 @@ public class BinaryMiniGameManager : MonoBehaviour
     private List<TMP_Text> bitTexts = new List<TMP_Text>();
     private string originalBits;
     private bool gameWon = false;
+    private float timeLeft = 20f;
+    private bool timerRunning = false;
 
     private void Start()
     {
         binaryGamePanel.SetActive(false);
+        resultPanel.SetActive(false);
     }
 
     public void StartBinaryGame()
@@ -30,6 +39,11 @@ public class BinaryMiniGameManager : MonoBehaviour
         binaryGamePanel.SetActive(true);
         bitTexts.Clear();
         gameWon = false;
+        timeLeft = 20f;
+        timerRunning = true;
+
+        resultPanel.SetActive(false);
+        timerText.text = "20";
 
         foreach (Transform child in bitContainer)
         {
@@ -37,6 +51,9 @@ public class BinaryMiniGameManager : MonoBehaviour
         }
 
         GenerateRandomBits();
+
+        // Start the timer coroutine
+        StartCoroutine(TimerCountdown());
     }
 
     void GenerateRandomBits()
@@ -62,10 +79,9 @@ public class BinaryMiniGameManager : MonoBehaviour
 
     void ToggleBit(TMP_Text bitText, int index)
     {
-        if (gameWon) return;
+        if (gameWon || !timerRunning) return;
 
         bitText.text = bitText.text == "0" ? "1" : "0";
-
         bitText.color = clickedColor;
 
         CheckWinCondition();
@@ -85,20 +101,49 @@ public class BinaryMiniGameManager : MonoBehaviour
     void OnGameWon()
     {
         gameWon = true;
-        Debug.Log("Binary puzzle solved!");
+        timerRunning = false;
 
         binaryGamePanel.SetActive(false);
         Time.timeScale = 1f;
 
         if (dataReceiver != null)
-        {
             dataReceiver.ProcessData();
+
+        resultPanel.SetActive(true);
+        resultText.text = "Completed Mission 01";
+    }
+
+    IEnumerator TimerCountdown()
+    {
+        while (timerRunning && timeLeft > 0f)
+        {
+            timerText.text = Mathf.CeilToInt(timeLeft).ToString();
+            yield return new WaitForSecondsRealtime(1f); // Use unscaled time
+            timeLeft -= 1f;
+        }
+
+        if (!gameWon)
+        {
+            timerRunning = false;
+            Time.timeScale = 1f;
+            binaryGamePanel.SetActive(false);
+
+            resultPanel.SetActive(true);
+            resultText.text = "You Lost";
+
+#if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false; // Stop play mode in Editor
+#else
+            Application.Quit(); // Quit in build
+#endif
         }
     }
 
     public void CancelGame()
     {
+        timerRunning = false;
         Time.timeScale = 1f;
         binaryGamePanel.SetActive(false);
+        resultPanel.SetActive(false);
     }
 }

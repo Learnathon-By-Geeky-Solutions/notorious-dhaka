@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
@@ -37,7 +37,6 @@ namespace PlayerStatus
             currentHealth -= amount;
             currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
             UpdateHealthUI();
-            Debug.Log($"Player Health: {currentHealth}");
 
             if (currentHealth <= 0)
             {
@@ -69,36 +68,25 @@ namespace PlayerStatus
         void UpdateHealthUI()
         {
             if (healthText != null)
-            {
-                if (currentHealth > 0)
-                    healthText.text = $"{currentHealth}/{maxHealth}";
-                else
-                    healthText.text = "Player Died";
-            }
+                healthText.text = currentHealth > 0 ? $"{currentHealth}/{maxHealth}" : "Player Died";
         }
 
         void UpdateHungerUI()
         {
             if (hungerText != null)
-            {
                 hungerText.text = $"{currentHunger}/{maxHunger}";
-            }
         }
 
         void UpdateThirstUI()
         {
             if (thirstText != null)
-            {
                 thirstText.text = $"{currentThirst}/{maxThirst}";
-            }
         }
 
         void UpdateOxygenUI()
         {
             if (oxygenText != null)
-            {
                 oxygenText.text = $"{currentOxygen}/{maxOxygen}";
-            }
         }
 
         void UpdateAllUI()
@@ -115,5 +103,28 @@ namespace PlayerStatus
             UpdateHealthUI();
             Destroy(gameObject);
         }
+
+        // ✅ Accessor methods for saving
+        public float GetHealth() => currentHealth;
+        public float GetHunger() => currentHunger;
+        public float GetThirst() => currentThirst;
+        public float GetOxygen() => currentOxygen;
+
+        public void SetAllStatus(float health, float hunger, float thirst, float oxygen)
+        {
+            currentHealth = health;
+            currentHunger = hunger;
+            currentThirst = thirst;
+            currentOxygen = oxygen;
+            UpdateAllUI();
+        }
+
+        public void HealPlayer(float amount)
+        {
+            currentHealth += amount;
+            currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
+            UpdateHealthUI();
+        }
+
     }
 }
