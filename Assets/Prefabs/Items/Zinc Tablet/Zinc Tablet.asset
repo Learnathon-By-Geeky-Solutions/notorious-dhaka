@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d86dd52ed6dfebf46aba3946e0503492, type: 3}
   m_Name: Zinc Tablet
   m_EditorClassIdentifier: 
-  name: Zinc Tablet
-  icon: {fileID: 21300000, guid: 3d2e11668b637b84a838896b810872b7, type: 3}
-  prefab: {fileID: 3343229072912101299, guid: bf58252b67b807e4eb830e9401bb344d, type: 3}
+  itemName: ZincTablet
+  icon: {fileID: 21300000, guid: 9a3563695e18e6041bca6ba32cf14768, type: 3}
+  prefab: {fileID: 5360071776204665877, guid: b659f279dcdf9fc4fb3cc872d4792494, type: 3}
   description: Zinc table for power up
+  itemType: 3
+  healAmount: 25

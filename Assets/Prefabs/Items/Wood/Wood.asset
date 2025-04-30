@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d86dd52ed6dfebf46aba3946e0503492, type: 3}
   m_Name: Wood
   m_EditorClassIdentifier: 
-  name: Wood
-  icon: {fileID: 21300000, guid: be91a829ba5b752439eac6413814a988, type: 3}
+  itemName: 
+  icon: {fileID: 21300000, guid: 54aca8416381e784097b6a0a0d024765, type: 3}
   prefab: {fileID: 1871775975219898785, guid: 8fac01af2e99e0c44bf0e6e53700decf, type: 3}
   description: Piece of wood
+  itemType: 1
+  healAmount: 0

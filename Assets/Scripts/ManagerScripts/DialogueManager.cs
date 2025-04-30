@@ -1,30 +1,36 @@
-using UnityEngine;
-using UnityEngine.UI;
+﻿using UnityEngine;
+using TMPro; // ✅ Import TMP namespace
 
 public class DialogueManager : MonoBehaviour
 {
     public GameObject dialoguePanel;
-    public Text dialogueText;
+    public TextMeshProUGUI dialogueText;
     public string[] dialogueLines;
     private int currentLine = 0;
 
-    void Start()
+    private void Start()
     {
-        dialoguePanel.SetActive(false);
+        if (dialoguePanel != null)
+            dialoguePanel.SetActive(false);
     }
 
     public void StartDialogue()
     {
-        dialoguePanel.SetActive(true);
-        currentLine = 0;
-        ShowNextDialogue();
+        if (dialoguePanel != null)
+        {
+            dialoguePanel.SetActive(true);
+            currentLine = 0;
+            ShowNextDialogue();
+        }
     }
 
     public void ShowNextDialogue()
     {
         if (currentLine < dialogueLines.Length)
         {
-            dialogueText.text = dialogueLines[currentLine];
+            if (dialogueText != null)
+                dialogueText.text = dialogueLines[currentLine];
+
             currentLine++;
         }
         else
@@ -33,8 +39,9 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
-    void EndDialogue()
+    public void EndDialogue() // ✅ Modified to public
     {
-        dialoguePanel.SetActive(false);
+        if (dialoguePanel != null)
+            dialoguePanel.SetActive(false);
     }
 }

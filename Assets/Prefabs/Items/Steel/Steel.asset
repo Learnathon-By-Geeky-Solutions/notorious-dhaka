@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d86dd52ed6dfebf46aba3946e0503492, type: 3}
   m_Name: Steel
   m_EditorClassIdentifier: 
-  name: Steel
-  icon: {fileID: 21300000, guid: a86c3f1381df8ae47a48cacb5f250a14, type: 3}
+  itemName: 
+  icon: {fileID: 21300000, guid: 9f382ca9bbd213b45b707ce360fb3c64, type: 3}
   prefab: {fileID: 5707854357144654417, guid: a6fabc061652c2340984047d7340e49a, type: 3}
   description: Steel
+  itemType: 1
+  healAmount: 0

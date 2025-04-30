@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d86dd52ed6dfebf46aba3946e0503492, type: 3}
   m_Name: Rope
   m_EditorClassIdentifier: 
-  name: Rope
-  icon: {fileID: 21300000, guid: d8e57c097c833f54b8ccf7a2c68e288e, type: 3}
+  itemName: 
+  icon: {fileID: 21300000, guid: bf0061635a8a71848b64715f9d4f58af, type: 3}
   prefab: {fileID: 9101415253187279301, guid: e34dcc9a16f29b2488f8611d587454d3, type: 3}
   description: Coiled Rope
+  itemType: 1
+  healAmount: 0

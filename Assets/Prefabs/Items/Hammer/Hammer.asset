@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d86dd52ed6dfebf46aba3946e0503492, type: 3}
   m_Name: Hammer
   m_EditorClassIdentifier: 
-  name: Hammer
-  icon: {fileID: 21300000, guid: 6bdf4d7463c4f99458079fb84e98a785, type: 3}
+  itemName: 
+  icon: {fileID: 21300000, guid: 085001211ebb8ac428ebd47bc37437bc, type: 3}
   prefab: {fileID: 2820877293920293599, guid: f07594ce77aacea489eb473c26752439, type: 3}
   description: It is a hammer
+  itemType: 0
+  healAmount: 0

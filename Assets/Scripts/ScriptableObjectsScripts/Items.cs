@@ -1,16 +1,25 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Scriptables
 {
-    [CreateAssetMenu]
+    public enum ItemType
+    {
+        Equippable,
+        NonEquippable,
+        Placeable,
+        Consumable // ✅ New item type added
+    }
+
+    [CreateAssetMenu(menuName = "Game/Item")]
     public class Items : ScriptableObject
     {
-        public string name;
+        public string itemName;
         public Sprite icon;
         public GameObject prefab;
-        [TextArea(3, 5)]
-        public string description;
+        [TextArea(3, 5)] public string description;
+
+        public ItemType itemType;
+
+        public float healAmount = 10f; // ✅ Added heal amount (only useful for Consumable)
     }
 }

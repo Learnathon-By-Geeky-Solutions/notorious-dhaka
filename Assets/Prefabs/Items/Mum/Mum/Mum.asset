@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d86dd52ed6dfebf46aba3946e0503492, type: 3}
+  m_Name: Mum
+  m_EditorClassIdentifier: 
+  itemName: 
+  icon: {fileID: 21300000, guid: c4589b336abb5d846babddca369e72f7, type: 3}
+  prefab: {fileID: 5847394672577369942, guid: 15962210d3cb9014485695f517114cb8, type: 3}
+  description: Water Bottle
+  itemType: 3
+  healAmount: 10

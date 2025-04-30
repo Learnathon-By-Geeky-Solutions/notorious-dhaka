@@ -1,8 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using Manager;
 using Scriptables;
+using PlayerInteract;
 
 namespace ItemZone
 {
@@ -10,31 +9,48 @@ namespace ItemZone
     {
         public Items item;
         public Inventory storage;
+
         void Start()
         {
             storage = FindObjectOfType<Inventory>();
-        }
-        void Update()
-        {
-            // This method is intentionally left empty.
-            // It serves as a placeholder for future initialization logic, if required.
         }
 
         private void OnCollisionEnter(Collision collision)
         {
             if (collision.gameObject.CompareTag("Player"))
             {
+                var holder = collision.gameObject.GetComponentInChildren<EquipmentHolder>();
+
+                if (holder != null && holder.equippedObject != null)
+                {
+                    string equippedName = holder.equippedObject.name.Replace("(Clone)", "").Trim();
+                    if (equippedName == item.itemName)
+                    {
+                        Debug.Log("[Details] Already equipped. Ignoring pickup.");
+                        return;
+                    }
+                }
+
                 if (item != null && storage != null)
                 {
-                    storage.AddItem(item);
-                    Destroy(gameObject);
-                }
-                else
-                {
-                    Debug.LogWarning("Item or Storage is null!");
+                    switch (item.itemType)
+                    {
+                        case ItemType.Equippable:
+                        case ItemType.NonEquippable:
+                        case ItemType.Consumable: // ✅ New case: Consumable items go to Inventory
+                            storage.AddItem(item);
+                            PlayerItemInteraction.Instance?.PlayCollectSound();
+                            Destroy(gameObject);
+                            break;
+
+                        case ItemType.Placeable:
+                            FindObjectOfType<PlaceableSpawner>()?.StartPlacing(item);
+                            PlayerItemInteraction.Instance?.PlayCollectSound();
+                            Destroy(gameObject);
+                            break;
+                    }
                 }
             }
         }
     }
-
 }

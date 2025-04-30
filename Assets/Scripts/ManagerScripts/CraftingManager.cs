@@ -11,9 +11,8 @@ namespace Manager
         public List<CraftingRecipe> recipes;
         public Transform craftingPlate;
 
-        public void TryCraft(List<Items> nearbyItems)
+        public void TryCraft(List<Items> nearbyItems, List<GameObject> nearbyItemObjects)
         {
-            // Check if recipes are assigned and not empty
             if (recipes == null || recipes.Count == 0)
             {
                 Debug.LogError("No recipes assigned to the crafting manager!");
@@ -22,11 +21,10 @@ namespace Manager
 
             foreach (CraftingRecipe recipe in recipes)
             {
-                // Ensure that outputItem is assigned in the recipe
                 if (recipe.outputItem == null)
                 {
                     Debug.LogError($"Output item is missing in the recipe for {recipe.name}");
-                    continue; // Skip this recipe if outputItem is missing
+                    continue;
                 }
 
                 Debug.Log($"Checking recipe: {recipe.outputItem.name}");
@@ -34,7 +32,7 @@ namespace Manager
                 if (IsRecipeMatch(recipe, nearbyItems))
                 {
                     CraftItem(recipe);
-                    RemoveItems(nearbyItems, recipe.inputItems);
+                    RemoveItems(nearbyItems, nearbyItemObjects, recipe.inputItems);
                     return;
                 }
             }
@@ -44,25 +42,39 @@ namespace Manager
 
         private bool IsRecipeMatch(CraftingRecipe recipe, List<Items> nearbyItems)
         {
-            Dictionary<string, int> itemCounts = new Dictionary<string, int>();
+            Dictionary<Items, int> nearbyItemCounts = new Dictionary<Items, int>();
 
             foreach (Items item in nearbyItems)
             {
-                if (itemCounts.ContainsKey(item.name))
-                    itemCounts[item.name]++;
+                if (nearbyItemCounts.ContainsKey(item))
+                    nearbyItemCounts[item]++;
                 else
-                    itemCounts[item.name] = 1;
+                    nearbyItemCounts[item] = 1;
             }
+
+            Dictionary<Items, int> recipeItemCounts = new Dictionary<Items, int>();
 
             foreach (Items inputItem in recipe.inputItems)
             {
-                if (!itemCounts.ContainsKey(inputItem.name) || itemCounts[inputItem.name] <= 0)
+                if (recipeItemCounts.ContainsKey(inputItem))
+                    recipeItemCounts[inputItem]++;
+                else
+                    recipeItemCounts[inputItem] = 1;
+            }
+
+            if (nearbyItemCounts.Count != recipeItemCounts.Count)
+            {
+                Debug.Log("Nearby items do not match the recipe exactly.");
+                return false;
+            }
+
+            foreach (var entry in recipeItemCounts)
+            {
+                if (!nearbyItemCounts.ContainsKey(entry.Key) || nearbyItemCounts[entry.Key] != entry.Value)
                 {
-                    Debug.Log($"Item {inputItem.name} is missing or insufficient.");
+                    Debug.Log($"Item mismatch: {entry.Key.name} expected {entry.Value}, found {nearbyItemCounts.GetValueOrDefault(entry.Key, 0)}");
                     return false;
                 }
-
-                itemCounts[inputItem.name]--;
             }
 
             return true;
@@ -70,7 +82,6 @@ namespace Manager
 
         private void CraftItem(CraftingRecipe recipe)
         {
-            // Check if outputItem and prefab are assigned
             if (recipe.outputItem != null && recipe.outputItem.prefab != null)
             {
                 if (craftingPlate != null)
@@ -89,15 +100,24 @@ namespace Manager
             }
         }
 
-        private void RemoveItems(List<Items> nearbyItems, List<Items> inputItems)
+        private void RemoveItems(List<Items> nearbyItems, List<GameObject> nearbyItemObjects, List<Items> inputItems)
         {
-            foreach (Items inputItem in inputItems)
+            List<Items> itemsToRemove = new List<Items>(inputItems);
+
+            for (int i = nearbyItems.Count - 1; i >= 0; i--)
             {
-                for (int i = 0; i < nearbyItems.Count; i++)
+                Items currentItem = nearbyItems[i];
+
+                for (int j = 0; j < itemsToRemove.Count; j++)
                 {
-                    if (nearbyItems[i].name == inputItem.name)
+                    if (currentItem == itemsToRemove[j])
                     {
+                        if (nearbyItemObjects[i] != null)
+                            Object.Destroy(nearbyItemObjects[i]);
+
+                        itemsToRemove.RemoveAt(j);
                         nearbyItems.RemoveAt(i);
+                        nearbyItemObjects.RemoveAt(i);
                         break;
                     }
                 }

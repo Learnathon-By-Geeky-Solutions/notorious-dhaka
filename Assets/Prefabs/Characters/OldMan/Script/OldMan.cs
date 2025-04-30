@@ -1,25 +1,16 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 public class OldMan : MonoBehaviour
 {
     public DialogueManager dialogueManager;
     public string[] dialogue;
-    private bool isPlayerNear = false;
-
-    void Update()
-    {
-        if (isPlayerNear && Input.GetKeyDown(KeyCode.E))
-        {
-            dialogueManager.dialogueLines = dialogue;
-            dialogueManager.StartDialogue();
-        }
-    }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            isPlayerNear = true;
+            dialogueManager.dialogueLines = dialogue;
+            dialogueManager.StartDialogue();
         }
     }
 
@@ -27,7 +18,7 @@ public class OldMan : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            isPlayerNear = false;
+            dialogueManager.EndDialogue(); // ✅ Close the dialogue when player exits
         }
     }
 }

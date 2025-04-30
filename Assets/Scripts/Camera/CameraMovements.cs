@@ -1,11 +1,12 @@
-using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace CameraBehaves
 {
     public class CameraMovement : MonoBehaviour
     {
         private Transform target;
+        private Vector3 basePosition;
+
         public Transform Target
         {
             get => target;
@@ -28,16 +29,18 @@ namespace CameraBehaves
             }
         }
 
-        void Update()
+        void LateUpdate() // ✅ Use LateUpdate to allow shake to apply after movement
         {
             if (target != null)
             {
-                transform.position = target.position;
+                basePosition = target.position;
+                transform.position = basePosition;
             }
-            else
-            {
-                Debug.Log("Game Over!");
-            }
+        }
+
+        public Vector3 GetBasePosition()
+        {
+            return basePosition;
         }
     }
 }

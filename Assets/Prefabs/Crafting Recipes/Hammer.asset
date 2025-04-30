@@ -13,5 +13,7 @@ MonoBehaviour:
   m_Name: Hammer
   m_EditorClassIdentifier: 
   inputItems:
+  - {fileID: 11400000, guid: 7364736d388a35448b049c3b22f1ffb6, type: 2}
+  - {fileID: 11400000, guid: 7364736d388a35448b049c3b22f1ffb6, type: 2}
   - {fileID: 11400000, guid: 00077de686111a448a8e3d7df947f66a, type: 2}
   outputItem: {fileID: 11400000, guid: 76c29816b2f2e8b4eb3741a3e030c3ee, type: 2}

@@ -9,6 +9,18 @@ namespace PlayerInteract
     {
         public Inventory storage;
         public GameObject canvas;
+
+        [Header("Sound")]
+        public AudioSource collectAudioSource;
+        public AudioClip collectSound;
+
+        public static PlayerItemInteraction Instance; // for global access to play sound
+
+        void Awake()
+        {
+            Instance = this;
+        }
+
         void Start()
         {
             storage = FindObjectOfType<Inventory>();
@@ -20,6 +32,14 @@ namespace PlayerInteract
             if (Input.GetKeyDown(KeyCode.I))
             {
                 canvas.SetActive(!canvas.activeSelf);
+            }
+        }
+
+        public void PlayCollectSound()
+        {
+            if (collectAudioSource != null && collectSound != null)
+            {
+                collectAudioSource.PlayOneShot(collectSound);
             }
         }
     }
